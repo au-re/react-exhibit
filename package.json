@@ -1,7 +1,6 @@
 {
   "name": "react-exhibit",
   "version": "0.1.0",
-  "private": true,
   "description": "React component library boilerplate demo",
   "main": "dist/index.js",
   "scripts": {
