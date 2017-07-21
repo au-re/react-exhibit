@@ -16,10 +16,11 @@ const path = require('path');
 const chalk = require('chalk');
 const fs = require('fs-extra');
 const webpack = require('webpack');
-const config = require('../config/webpack.config.prod');
+const config = require('../config/webpack.config.docs');
 const paths = require('../config/paths');
 const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
+const printHostingInstructions = require('react-dev-utils/printHostingInstructions');
 const FileSizeReporter = require('react-dev-utils/FileSizeReporter');
 
 const measureFileSizesBeforeBuild =
@@ -38,13 +39,13 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 
 // First, read the current file sizes in build directory.
 // This lets us display how much they changed later.
-measureFileSizesBeforeBuild(paths.appDist)
+measureFileSizesBeforeBuild(paths.appDocs)
   .then(previousFileSizes => {
     // Remove all content but keep the directory so that
     // if you're in it, you don't end up in Trash
-    fs.emptyDirSync(paths.appDist);
+    fs.emptyDirSync(paths.appDocs);
     // Merge with the public folder
-
+    copyPublicFolder();
     // Start the webpack build
     return build(previousFileSizes);
   })
@@ -71,12 +72,23 @@ measureFileSizesBeforeBuild(paths.appDist)
       printFileSizesAfterBuild(
         stats,
         previousFileSizes,
-        paths.appDist,
+        paths.appDocs,
         WARN_AFTER_BUNDLE_GZIP_SIZE,
         WARN_AFTER_CHUNK_GZIP_SIZE
       );
       console.log();
-      console.log(chalk.green('You can now publish your library to npm'))
+
+      const appPackage = require(paths.appPackageJson);
+      const publicUrl = paths.publicUrl;
+      const publicPath = config.output.publicPath;
+      const buildFolder = path.relative(process.cwd(), paths.appDocs);
+      printHostingInstructions(
+        appPackage,
+        publicUrl,
+        publicPath,
+        buildFolder,
+        useYarn
+      );
     },
     err => {
       console.log(chalk.red('Failed to compile.\n'));
@@ -123,7 +135,7 @@ function build(previousFileSizes) {
 }
 
 function copyPublicFolder() {
-  fs.copySync(paths.appPublic, paths.appDist, {
+  fs.copySync(paths.appPublic, paths.appDocs, {
     dereference: true,
     filter: file => file !== paths.appHtml,
   });

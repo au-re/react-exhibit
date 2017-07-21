@@ -1,4 +1,4 @@
-# ignore all folders not relevant to the package
+# all folders that should not be published to npm
 src
 scripts
 public
