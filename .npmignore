@@ -1,0 +1,5 @@
+# ignore all folders not relevant to the package
+src
+scripts
+public
+config
