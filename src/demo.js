@@ -1,11 +1,11 @@
 import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 
 import MyComponentDemo from "./MyComponent/MyComponent.demo";
+import MyComponentDemoSource from "!!raw-loader!./MyComponent/MyComponent.demo";
+import MyComponentDocs from "!!raw-loader!jsdoc2js-loader!./MyComponent/MyComponent";
 import { PrismCode } from 'react-prism';
 import React from "react";
 import ReactDOM from "react-dom";
-
-const MyComponentDemoSource = require("!!raw-loader!./MyComponent/MyComponent.demo");
 
 const demos = {
   MyComponentDemo
@@ -41,6 +41,8 @@ function DemoPage(props) {
           {elements}
         </div>
         <div style={{ height: "500px" }}>
+          <h1>{MyComponentDocs[0].name}</h1>
+          <h3>{MyComponentDocs[0].description}</h3>
           <pre>
             <PrismCode className="language-jsx">
               {MyComponentDemoSource}

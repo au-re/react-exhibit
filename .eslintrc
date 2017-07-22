@@ -11,5 +11,14 @@
   "rules": {
     "no-console": "warn",
     "import/no-webpack-loader-syntax": "off"
-  }
+  },
+  "valid-jsdoc": [
+    "error",
+    {
+      "requireParamDescription": true,
+      "requireReturn": true,
+      "requireReturnDescription": true,
+      "requireReturnType": true
+    }
+  ]
 }

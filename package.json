@@ -19,6 +19,7 @@
     "test:staged": "CI=true node scripts/test.js --env=jsdom"
   },
   "dependencies": {
+    "jsdoc2js-loader": "^1.0.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-prism": "^4.3.0",
