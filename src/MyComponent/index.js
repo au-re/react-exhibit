@@ -5,9 +5,11 @@ import React from 'react';
 /**
  * A demo component
  *
+ * @export
  * @param {object} props
  * @param {string} props.X - a value to be passed
  * @returns {object} MyComponent
+ *
  */
 function MyComponent(props) {
   return (<div className="MyComponent">

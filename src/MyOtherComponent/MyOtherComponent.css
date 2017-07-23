@@ -1,0 +1,15 @@
+.MyOtherComponent {
+  text-align: center;
+}
+
+.MyOtherComponent-header {
+  background-color: #FFF;
+}
+
+.MyOtherComponent-logo {
+  display: inline;
+}
+
+.MyOtherComponent-intro {
+  font-size: large;
+}
