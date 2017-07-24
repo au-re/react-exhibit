@@ -1,5 +1,3 @@
-import './index.css';
-
 import MyComponent from './MyComponent';
 import MyOtherComponent from './MyOtherComponent';
 

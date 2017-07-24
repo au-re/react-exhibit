@@ -23,4 +23,12 @@ function MyComponent(props) {
   </div>);
 }
 
+/**
+ * Some Helper function
+ *
+ */
+function helperFunction() {
+
+}
+
 export default MyComponent;

@@ -1,3 +1,5 @@
+import "./demo.css";
+
 import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 
 import { PrismCode } from 'react-prism';
@@ -61,27 +63,41 @@ function requireAllDemos() {
 
 const ComponentListItem = ({ label, link, activeOnlyWhenExact }) => (
   <Route path={link} exact={activeOnlyWhenExact} children={({ match }) => (
-    <Link to={link}>
-      <div>
-        {label}
+    <Link style={{ textDecoration: "none" }} to={link}>
+      <div className={match ? "ComponentListItem Selected" : "ComponentListItem"}>
+        {label.replace(/([A-Z])/g, " $1").trim()}
       </div>
     </Link>
   )} />
 );
 
 function DemoPage(props) {
-  return (
-    <div style={{ height: "500px" }}>
-      <h1>{props.name}</h1>
-      <h3>{props.description}</h3>
-      <pre>
-        <PrismCode className="language-jsx">
-          {props.source}
-        </PrismCode>
-      </pre>
-      <div style={{ height: "500px" }}>
-        {props.demo}
+  const sources = props.source.map((source, idx) => (
+    <div className="Sources">
+      <div className="Showcase">
+        {props.demo[idx].default()}
       </div>
+      <div className="Code">
+        <pre>
+          <PrismCode className="language-jsx">
+            {source}
+          </PrismCode>
+        </pre>
+      </div>
+    </div>
+  ));
+
+  const docs = props.docs.map((doc) => (
+    <div className="Docs">
+      <h1>{doc.name}</h1>
+      <p>{doc.description}</p>
+    </div>));
+
+
+  return (
+    <div className="DemoArea">
+      {docs}
+      {sources}
     </div>)
 }
 
@@ -95,10 +111,9 @@ function DemoRouter(props) {
       path={`/${demo}`}
       component={() => (
         <DemoPage
-          name={props.data[demo].docs[0].name}
-          description={props.data[demo].docs[0].description}
-          source={props.data[demo].source[0]}
-          demo={props.data[demo].demo[0].default()}
+          docs={props.data[demo].docs}
+          source={props.data[demo].source}
+          demo={props.data[demo].demo}
         />
       )}
       key={demo} />);
@@ -106,12 +121,14 @@ function DemoRouter(props) {
 
   return (
     <Router>
-      <div>
-        <div>
-          {elements}
-        </div>
-        <div style={{ height: "500px" }}>
+      <div className="Demo">
+        <div className="Header"><h3>Exhibit</h3></div>
+        <div className="ComponentDemos">
           {routes}
+        </div>
+        <div className="ComponentList">
+          <h1 className="ComponentListHeader">Components</h1>
+          {elements}
         </div>
       </div>
     </Router>);
