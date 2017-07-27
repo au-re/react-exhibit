@@ -13,7 +13,6 @@
       "error",
       "double"
     ],
-    "no-console": "warn",
     "import/no-webpack-loader-syntax": "off",
     "valid-jsdoc": [
       "error",
