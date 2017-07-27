@@ -3,6 +3,7 @@
   "version": "1.1.1",
   "description": "A React component library for component libraries",
   "main": "dist/index.js",
+  "license": "MIT",
   "homepage": "https://au-re.github.io/react-exhibit/",
   "scripts": {
     "build:dist": "node scripts/build.js",
@@ -117,5 +118,9 @@
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/au-re/react-exhibit.git"
   }
 }
