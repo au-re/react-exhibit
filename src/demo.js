@@ -1,10 +1,8 @@
-import "./demo.css";
-
-import { Link, Route, BrowserRouter as Router } from "react-router-dom";
-
-import { PrismCode } from 'react-prism';
+import { Demo } from "./index";
+import Markdown from "markdown-to-jsx";
 import React from "react";
 import ReactDOM from "react-dom";
+import readme from "../README.md";
 
 /* FETCH THE DEMO DATA */
 
@@ -16,7 +14,7 @@ function extractComponentName(path, stop) {
 
 // only render documentation that was made by the developer
 function filterDocs(docs) {
-  return docs.filter((doc) => doc.comment);
+  return docs.filter((doc) => doc.comment && doc.tags && doc.tags[0].title === "export");
 }
 
 /**
@@ -36,9 +34,9 @@ function filterDocs(docs) {
  */
 function requireAllDemos() {
   const components = {};
-  const demoSources = require.context(`!!raw-loader!./`, true, /demo\/.*\.js$/);
-  const demos = require.context(`./`, true, /demo\/.*\.js$/);
-  const docs = require.context(`!!raw-loader!jsdoc2js-loader!./`, true, /.*[^.]\/index.js/);
+  const demoSources = require.context("!!raw-loader!./", true, /demo\/.*\.js$/);
+  const demos = require.context("./", true, /demo\/.*\.js$/);
+  const docs = require.context("!!raw-loader!jsdoc2js-loader!./", true, /.*[^.]\/index.js/);
 
   demos.keys().forEach((key) => {
     const name = extractComponentName(key, "demo");
@@ -61,77 +59,8 @@ function requireAllDemos() {
 
 /* RENDER THE DEMO DATA */
 
-const ComponentListItem = ({ label, link, activeOnlyWhenExact }) => (
-  <Route path={link} exact={activeOnlyWhenExact} children={({ match }) => (
-    <Link style={{ textDecoration: "none" }} to={link}>
-      <div className={match ? "ComponentListItem Selected" : "ComponentListItem"}>
-        {label.replace(/([A-Z])/g, " $1").trim()}
-      </div>
-    </Link>
-  )} />
-);
-
-function DemoPage(props) {
-  const sources = props.source.map((source, idx) => (
-    <div className="Sources">
-      <div className="Showcase">
-        {props.demo[idx].default()}
-      </div>
-      <div className="Code">
-        <pre>
-          <PrismCode className="language-jsx">
-            {source}
-          </PrismCode>
-        </pre>
-      </div>
-    </div>
-  ));
-
-  const docs = props.docs.map((doc) => (
-    <div className="Docs">
-      <h1>{doc.name}</h1>
-      <p>{doc.description}</p>
-    </div>));
-
-
-  return (
-    <div className="DemoArea">
-      {docs}
-      {sources}
-    </div>)
-}
-
-function DemoRouter(props) {
-  const elements = [];
-  const routes = [];
-
-  for (const demo in props.data) {
-    elements.push(<ComponentListItem link={`/${demo}`} label={demo} key={demo} />);
-    routes.push(<Route
-      path={`/${demo}`}
-      component={() => (
-        <DemoPage
-          docs={props.data[demo].docs}
-          source={props.data[demo].source}
-          demo={props.data[demo].demo}
-        />
-      )}
-      key={demo} />);
-  }
-
-  return (
-    <Router>
-      <div className="Demo">
-        <div className="Header"><h3>Exhibit</h3></div>
-        <div className="ComponentDemos">
-          {routes}
-        </div>
-        <div className="ComponentList">
-          <h1 className="ComponentListHeader">Components</h1>
-          {elements}
-        </div>
-      </div>
-    </Router>);
-}
-
-ReactDOM.render(<DemoRouter data={requireAllDemos()} />, document.getElementById("root"));
+ReactDOM.render(<Demo
+  readme={<Markdown>{readme}</Markdown>}
+  label="Exhibit"
+  components={requireAllDemos()} />,
+  document.getElementById("root"));

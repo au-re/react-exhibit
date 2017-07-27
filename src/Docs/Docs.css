@@ -1,0 +1,105 @@
+.ComponentDocs {
+    position: relative;
+    background-color: #FFF;
+    overflow: hidden;
+    border: 1px solid var(--bright-grey);
+    box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px;
+}
+
+.ComponentDocs:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 1em;
+    color: var(--bright-grey);
+    font-size: smaller;
+    font-weight: 500;
+    content: 'DOCS';
+}
+
+.ComponentDocs__Header {
+    padding: 40px 16px 8px 16px;
+}
+
+.ComponentDocs__Label {
+    text-overflow: ellipsis;
+    color: var(--dark-grey);
+    font-weight: 600;
+    font-size: 24px;
+    margin: 0;
+}
+
+.ComponentDocs__Description {
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--dark-grey);
+    font-weight: normal;
+}
+
+.ComponentDocs__Props {
+    padding: 16px;
+    padding-top: 0;
+    overflow: hidden;
+}
+
+.ComponentDocs__Props__Header {
+    color: var(--dark-grey);
+    margin: 24px 0 8px 0;
+}
+
+.ComponentDocs__TableWrapper {
+    overflow-x: scroll;
+}
+
+.ComponentDocs__Table {
+    font-size: 14px;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    border: 1px solid var(--bright-grey);
+}
+
+.ComponentDocs__Table__Labels {
+    background-color: var(--grey);
+    color: #FFF;
+}
+
+.ComponentDocs__Table__Labels th {
+    padding-left: 16px;
+}
+
+.ComponentDocs__Table tr {
+    height: 40px;
+}
+
+.ComponentDocs__Table tr,
+.ComponentDocs__Table td {
+    border-top: 1px solid var(--bright-grey);
+    padding-left: 16px;
+}
+
+
+/* Small Devices, Tablets */
+
+@media only screen and (min-width: 768px) {
+    .ComponentDocs__Header {
+        padding: 56px 48px 24px 48px;
+    }
+    .ComponentDocs__Props {
+        padding: 48px;
+        padding-top: 0;
+    }
+    .ComponentDocs__Description {
+        line-height: 32px;
+    }
+}
+
+
+/* Medium Devices, Desktops */
+
+@media only screen and (min-width: 992px) {}
+
+
+/* Large Devices, Wide Screens */
+
+@media only screen and (min-width: 1200px) {}

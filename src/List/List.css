@@ -1,0 +1,16 @@
+.ComponentList {
+    background-color: #FFF;
+}
+
+.ComponentList__Header {
+    padding-left: 24px;
+}
+
+.ComponentList__Label {
+    margin: 0;
+    color: var(--dark-grey);
+    font-weight: 600;
+    line-height: 72px;
+    font-size: 16px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}

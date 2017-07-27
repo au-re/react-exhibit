@@ -1,0 +1,27 @@
+.ComponentList__Item {
+    display: block;
+    text-decoration: none;
+    font-style: normal;
+    white-space: nowrap;
+    font-size: 16px;
+    line-height: 48px;
+    border-right: 2px solid #fff;
+    color: var(--grey);
+    cursor: pointer;
+    padding-left: 24px;
+    background-color: #fff;
+}
+
+.ComponentList__Item:hover {
+    background-color: var(--bright-grey);
+    border-right: 2px solid var(--bright-grey);
+    color: var(--dark-grey);
+    text-decoration: none;
+}
+
+.ComponentList__Item--Selected,
+.ComponentList__Item--Selected:hover {
+    background-color: var(--bright-grey);
+    border-right: 4px solid var(--accent-warm);
+    color: var(--dark-grey);
+}

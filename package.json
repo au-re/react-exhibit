@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "homepage": "https://au-re.github.io/react-exhibit/",
   "scripts": {
-    "build": "node scripts/build.js",
-    "build:docs": "node scripts/build-docs.js",
+    "build:dist": "node scripts/build.js",
+    "build": "node scripts/build-docs.js",
     "check:staged": "npm run lint && npm run test:staged",
     "clean": "rm -rf node_modules build docs dist && npm i",
     "commit": "npm run check:staged && git-cz",
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "jsdoc2js-loader": "^1.0.2",
+    "markdown-to-jsx": "^5.4.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-prism": "^4.3.0",

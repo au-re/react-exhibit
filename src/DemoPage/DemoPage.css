@@ -1,0 +1,68 @@
+.Exhibit__ComponentList {
+    border-bottom: 1px solid var(--bright-grey);
+    box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px;
+    margin-bottom: 24px;
+}
+
+.Exhibit__DemoPage {
+    padding: 4px;
+}
+
+.Exhibit__DemoPage__Label {
+    color: var(--dark-grey);
+    max-width: 920px;
+    margin: auto;
+}
+
+.Exhibit__DemoPage__Docs,
+.Exhibit__DemoPage__Showcases {
+    max-width: 920px;
+    margin: auto;
+}
+
+.Exhibit__LandingPage {
+    max-width: 920px;
+    margin: auto;
+}
+
+
+/* Small Devices, Tablets */
+
+@media only screen and (min-width: 992px) {
+    .Exhibit {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        grid-template-columns: auto 1fr;
+        grid-gap: 10px;
+    }
+    .Exhibit__Header {
+        grid-area: 1 / 1 / 2 / 4;
+    }
+    .Exhibit__ComponentList {
+        min-width: 240px;
+        box-shadow: none;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .Exhibit__DemoPage {
+        padding: 24px 72px 0 72px;
+    }
+}
+
+
+/* Large Devices, Wide Screens */
+
+@media only screen and (min-width: 1920px) {
+    .Exhibit__DemoPage {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+    }
+    .Exhibit__DemoPage__Label{
+        grid-area: 1 / 1 / 2 / 3;
+    }
+    .Exhibit__DemoPage__Docs{
+        height: 100%;
+    }
+}

@@ -1,0 +1,43 @@
+.Showcase {
+    background-color: #FFF;
+    margin: 24px 0 24px 0;
+    border: 1px solid var(--bright-grey);
+    box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px;
+}
+
+.Showcase__Demo {
+    padding: 48px 16px 16px 16px;
+    position: relative;
+    overflow-x: scroll;
+}
+
+.Showcase__Demo:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 1em;
+    color: var(--bright-grey);
+    font-size: smaller;
+    font-weight: 500;
+    content: 'EXAMPLE';
+}
+
+.Showcase__Source pre {
+    border-radius: 0;
+    margin: 0;
+}
+
+
+/* Small Devices, Tablets */
+
+@media only screen and (min-width: 768px) {
+    .Showcase__Demo {
+        padding: 48px;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    .Showcase {
+        margin-top: 0px;
+    }
+}
