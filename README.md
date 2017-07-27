@@ -4,8 +4,8 @@
 
 # react-exhibit
 
-A library providing React components for documentation. It is there to help
-visualize your React library. Used in [react-exhibit-boilerplate](https://github.com/au-re/react-exhibit-boilerplate).
+React components for documentation. Here to help visualize your React library.
+Used in [react-exhibit-boilerplate](https://github.com/au-re/react-exhibit-boilerplate).
 
 ## Using the components
 
@@ -20,7 +20,7 @@ Import the components you want from "react-exhibit".
 ```
 import React from "react";
 import { Showcase } from "react-exhibit";
-import "./node_modules/react-exhibit/dist/css/main.css"
+import "../node_modules/react-exhibit/dist/css/main.css"
 
 const demo = (<div>I'm in a showcase!</div>)
 const source = "(<div>I'm in a showcase!</div>)";

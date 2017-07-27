@@ -1,7 +1,7 @@
 {
   "name": "react-exhibit",
   "version": "1.0.2",
-  "description": "React component library boilerplate demo",
+  "description": "A React component library for component libraries",
   "main": "dist/index.js",
   "homepage": "https://au-re.github.io/react-exhibit/",
   "scripts": {
