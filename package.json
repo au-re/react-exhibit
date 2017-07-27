@@ -15,7 +15,7 @@
     "postcheckout": "npm run clean",
     "postmerge": "npm run clean",
     "predeploy": "npm run build",
-    "prepublishOnly": "npm run check:staged",
+    "prepublishOnly": "npm run check:staged && npm run build:dist",
     "start": "node scripts/start.js",
     "start:docs": "serve docs",
     "test": "node scripts/test.js --env=jsdom",
