@@ -11,13 +11,13 @@ Used in [react-exhibit-boilerplate](https://github.com/au-re/react-exhibit-boile
 
 In you react project run:
 
-```
+```shell
 npm i -S react-exhibit
 ```
 
 Import the components you want from "react-exhibit".
 
-```
+```js
 import React from "react";
 import { Showcase } from "react-exhibit";
 import "../node_modules/react-exhibit/dist/css/main.css"

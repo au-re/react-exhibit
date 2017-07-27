@@ -7,8 +7,8 @@ import React from "react";
  * A showcase component, renders a react component and displays source code.
  *
  * @export
- * @param {string} demo - the react demo to be run
- * @param {string} source - the source code to be displayed
+ * @param {string} [demo] - the react demo to be run
+ * @param {string} [source] - the source code to be displayed
  * @return {object} Showcase Component
  */
 const Showcase = ({ source, demo }) => (

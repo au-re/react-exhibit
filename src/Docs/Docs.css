@@ -1,25 +1,8 @@
 .ComponentDocs {
-    position: relative;
     background-color: #FFF;
     overflow: hidden;
-    border: 1px solid var(--bright-grey);
-    box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px;
 }
 
-.ComponentDocs:before {
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding: 1em;
-    color: var(--bright-grey);
-    font-size: smaller;
-    font-weight: 500;
-    content: 'DOCS';
-}
-
-.ComponentDocs__Header {
-    padding: 40px 16px 8px 16px;
-}
 
 .ComponentDocs__Label {
     text-overflow: ellipsis;
@@ -36,8 +19,8 @@
     font-weight: normal;
 }
 
-.ComponentDocs__Props {
-    padding: 16px;
+.ComponentDocs__Props {/*
+    padding: 16px; */
     padding-top: 0;
     overflow: hidden;
 }
@@ -82,12 +65,9 @@
 /* Small Devices, Tablets */
 
 @media only screen and (min-width: 768px) {
-    .ComponentDocs__Header {
-        padding: 56px 48px 24px 48px;
-    }
-    .ComponentDocs__Props {
-        padding: 48px;
-        padding-top: 0;
+    .ComponentDocs {
+        padding-top: 24px;
+        padding-bottom: 24px;
     }
     .ComponentDocs__Description {
         line-height: 32px;
