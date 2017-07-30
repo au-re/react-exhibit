@@ -1,27 +1,32 @@
-.ComponentList__Item {
+.ComponentList__Item,
+.ComponentList__Item:active
+.ComponentList__Item:focus {
+    font-family: 'Arimo', sans-serif;
     display: block;
     text-decoration: none;
     font-style: normal;
     white-space: nowrap;
-    font-size: 16px;
-    line-height: 48px;
-    border-right: 2px solid #fff;
+    font-size: 1.5rem;
+    line-height: 4rem;
+    border-left: 2px solid #fff;
     color: var(--grey);
     cursor: pointer;
-    padding-left: 24px;
+    padding-left: 3rem;
     background-color: #fff;
 }
 
 .ComponentList__Item:hover {
     background-color: var(--bright-grey);
-    border-right: 2px solid var(--bright-grey);
+    border-left: 2px solid var(--bright-grey);
     color: var(--dark-grey);
     text-decoration: none;
 }
 
 .ComponentList__Item--Selected,
+.ComponentList__Item--Selected:focus,
+.ComponentList__Item--Selected:active,
 .ComponentList__Item--Selected:hover {
     background-color: var(--bright-grey);
-    border-right: 4px solid var(--accent-warm);
-    color: var(--dark-grey);
+    border-left: 2px solid var(--accent-warm);
+    color: #000;
 }

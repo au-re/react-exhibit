@@ -49,9 +49,7 @@ function DemoPage({ name, docs, sources, demos }) {
  */
 function App({ components, label, readme }) {
   const componentListItems = [];
-  const routes = [
-
-  ];
+  const routes = [];
 
   for (const component in components) {
 
