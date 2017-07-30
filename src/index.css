@@ -9,3 +9,10 @@
     --dark-warm: #F8932B;
     --bright-warm: #F9AE15;
 }
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Arimo', sans-serif;
+}

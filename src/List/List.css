@@ -1,5 +1,5 @@
 .ComponentList__Header {
-    padding-left: 1rem;
+    padding-left: 10px;
 }
 
 .ComponentList__Label {
@@ -8,7 +8,7 @@
     padding: 0;
     color: var(--dark-grey);
     font-weight: 600;
-    line-height: 4rem;
-    font-size: 1.5rem;
+    line-height: 40px;
+    font-size: 15px;
     font-family: 'Arimo', sans-serif;
 }

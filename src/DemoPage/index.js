@@ -29,9 +29,7 @@ function DemoPage({ name, docs, sources, demos }) {
 
   return (
     <div className="Exhibit__DemoPage">
-      <div className="Exhibit__DemoPage__Label">
-        <h1>{name}</h1>
-      </div>
+      <h1 className="Exhibit__DemoPage__Label">{name}</h1>
       <div className="Exhibit__DemoPage__Docs">
         {componentDocs}
       </div>
@@ -79,17 +77,21 @@ function App({ components, label, readme }) {
         <div className="Exhibit__Header">
           <Header label={label} />
         </div>
-        <div className="Exhibit__ComponentList">
-          <List label="Components">
-            {componentListItems}
-          </List>
+        <div className="Exhibit__Content">
+
+          <div className="Exhibit__ComponentList">
+            <List label="Components">
+              {componentListItems}
+            </List>
+          </div>
+
+          <Switch>
+            {routes}
+            <Route
+              key={0}
+              component={() => (<div className="Exhibit__LandingPage">{readme}</div>)} />
+          </Switch>
         </div>
-        <Switch>
-          {routes}
-          <Route
-            key={0}
-            component={() => (<div className="Exhibit__LandingPage">{readme}</div>)} />
-        </Switch>
       </div>
     </Router>);
 }

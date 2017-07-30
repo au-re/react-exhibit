@@ -6,8 +6,8 @@
     text-decoration: none;
     font-style: normal;
     white-space: nowrap;
-    font-size: 1.5rem;
-    line-height: 4rem;
+    font-size: 15px;
+    line-height: 40px;
     border-left: 2px solid #fff;
     color: var(--grey);
     cursor: pointer;
