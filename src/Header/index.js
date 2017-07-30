@@ -12,7 +12,7 @@ import React from "react";
  */
 const Header = ({ label, children }) => (
   <div className="Header">
-    <Link className="Header__Label" to="/"> {label} </Link>
+    <Link className="Header__Label" to={`${process.env.PUBLIC_URL}/`}> {label} </Link>
   </div>);
 
 export default Header;
