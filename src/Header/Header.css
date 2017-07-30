@@ -1,12 +1,23 @@
 .Header {
-    height: 64px;
     background-color: var(--bright-grey);
-    padding-left: 24px;
+    display: grid;
+    grid-template-columns: 0.25fr 1fr 0.25fr;
 }
 
 .Header__Label {
-    line-height: 64px;
-    font-size: 24px;
+    grid-column: 2;
+    font-family: 'Arimo', sans-serif;
+    line-height: 56px;
+    font-size: 18px;
     text-decoration: none;
-    color: var(--dark-grey);
+    color: #000;
+}
+
+.Header__Label:visited {
+    color: #000;
+}
+
+.Header__Label:hover,
+.Header__Label:active {
+    color: var(--grey);
 }
