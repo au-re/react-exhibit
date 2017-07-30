@@ -1,16 +1,10 @@
 :root {
-    --dark-grey: #555;
+    --dark-grey: #455A64;
     --grey: #697785;
-    --bright-grey: #EEE;
+    --bright-grey: #f7f7f7;
     --accent-warm: #EB529A;
     --dark-cold: #7454A2;
     --bright-cold: #29ACE2;
     --dark-warm: #F8932B;
     --bright-warm: #F9AE15;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Roboto, sans-serif;
 }
