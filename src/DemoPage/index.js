@@ -1,6 +1,6 @@
 import "./DemoPage.css";
 
-import { Docs, Header, List, ListItem, Showcase } from "../index"
+import { Docs, Header, List, ListItem, Showcase } from "../index";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import React from "react";

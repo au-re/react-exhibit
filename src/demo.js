@@ -1,3 +1,5 @@
+/*  eslint-disable */
+
 import { Demo } from "./index";
 import Markdown from "markdown-to-jsx";
 import React from "react";
@@ -41,7 +43,7 @@ function requireAllDemos() {
   demos.keys().forEach((key) => {
     const name = extractComponentName(key, "demo");
     if (!components[name]) {
-      components[name] = { source: [], demo: [] }
+      components[name] = { source: [], demo: [] };
     }
     components[name].source.push(demoSources(key));
     components[name].demo.push(demos(key));

@@ -20,7 +20,7 @@ Import the components you want from "react-exhibit".
 ```jsx
 import React from "react";
 import { Showcase } from "react-exhibit";
-import "../node_modules/react-exhibit/dist/css/main.css"
+import "../node_modules/react-exhibit/dist/css/main.css";
 
 const demo = (<div>I'm in a showcase!</div>);
 const source = "(<div>I'm in a showcase!</div>)";

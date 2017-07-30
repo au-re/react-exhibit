@@ -1,4 +1,4 @@
-import "./Docs.css"
+import "./Docs.css";
 
 import React from "react";
 
@@ -36,8 +36,8 @@ const ParamTable = ({ params }) => {
           </tbody>
         </table>
       </div>
-    </div>)
-}
+    </div>);
+};
 
 /**
  * A Container to showcase component properties, can currently only render one
@@ -49,8 +49,7 @@ const ParamTable = ({ params }) => {
  * @param {array} [params] - parameter (props) of the component
  * @returns {object} - Component Docs
  */
-const Docs = ({ label, description, params }) => {
-  return (
+const Docs = ({ label, description, params }) => (
     <div className="ComponentDocs">
       <div className="ComponentDocs__Header">
         <h1 className="ComponentDocs__Label">{label}</h1>
@@ -59,7 +58,6 @@ const Docs = ({ label, description, params }) => {
         <p className="ComponentDocs__Description">{description}</p>
         <ParamTable params={params} />
       </div>
-    </div>)
-};
+    </div>);
 
 export default Docs;

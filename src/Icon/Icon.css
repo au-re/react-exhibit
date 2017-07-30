@@ -1,0 +1,45 @@
+.Exhibit__Icon__Box {
+    width: 0px;
+    height: 0px;
+}
+
+.Exhibit__Icon__Box.Box--Outer {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+    position: relative;
+    border-bottom: 120px solid var(--bright-cold);
+    border-left: 120px solid var(--dark-cold);
+}
+
+.Exhibit__Icon__Box.Box--Inner {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+    position: absolute;
+    margin-left: -100px;
+    margin-top: 20px;
+    border-bottom: 80px solid var(--dark-warm);
+    border-left: 80px solid var(--bright-warm);
+    transition: transform .25s ease-in-out;
+}
+
+.Exhibit__Icon__Box.Box--Inner:hover {
+    transform: rotate(90deg);
+}
+
+.Exhibit__Icon__Box.Box--Inner:hover+.Exhibit__Icon__Circle.Circle--Top {
+    transform: translate(0px, 20px);
+}
+
+.Exhibit__Icon__Circle {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+    position: absolute;
+    z-index: 4000;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+}
+
+.Exhibit__Icon__Circle.Circle--Top {
+    margin-top: 92px;
+    margin-left: -68px;
+    background-color: var(--accent-warm);
+    transition: transform .25s ease-in-out;
+}

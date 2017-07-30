@@ -1,4 +1,4 @@
-import "./ListItem.css"
+import "./ListItem.css";
 
 import { Link, Route } from "react-router-dom";
 

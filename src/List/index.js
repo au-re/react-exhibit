@@ -1,4 +1,4 @@
-import "./List.css"
+import "./List.css";
 
 import React from "react";
 
