@@ -17,12 +17,13 @@ const ParamTable = ({ params }) => {
       <td>{param.name}</td>
       <td>{param.type.names[0]}</td>
       <td>{param.optional ? "true" : "false"}</td>
+      <td>{param.defaultvalue || ""}</td>
       <td>{param.description}</td>
     </tr>));
 
   return (
     <div>
-      <h3 className="ComponentDocs__Props__Header">Props</h3>
+      <h3 className="ComponentDocs__Label">Props</h3>
       <div className="ComponentDocs__TableWrapper">
         <table className="ComponentDocs__Table">
           <tbody>
@@ -30,6 +31,7 @@ const ParamTable = ({ params }) => {
               <th>Name</th>
               <th>Type</th>
               <th>Optional</th>
+              <th>Default</th>
               <th>Description</th>
             </tr>
             {paramRows}

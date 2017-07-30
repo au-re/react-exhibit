@@ -3,43 +3,41 @@
     overflow: hidden;
 }
 
-
 .ComponentDocs__Label {
+    font-family: 'Arimo', sans-serif;
+    text-align: left;
+    line-height: 3rem;
     text-overflow: ellipsis;
     color: var(--dark-grey);
     font-weight: 600;
-    font-size: 24px;
+    font-size: 2rem;
     margin: 0;
 }
 
 .ComponentDocs__Description {
-    font-size: 16px;
+    text-align: left;
+    font-family: 'Arimo', sans-serif;
+    font-size: 1.5rem;
     line-height: 24px;
     color: var(--dark-grey);
     font-weight: normal;
 }
 
-.ComponentDocs__Props {/*
-    padding: 16px; */
+.ComponentDocs__Props {
     padding-top: 0;
     overflow: hidden;
 }
 
-.ComponentDocs__Props__Header {
-    color: var(--dark-grey);
-    margin: 24px 0 8px 0;
-}
-
 .ComponentDocs__TableWrapper {
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 .ComponentDocs__Table {
-    font-size: 14px;
+    font-family: 'Arimo', sans-serif;
     width: 100%;
     text-align: left;
     border-collapse: collapse;
-    border: 1px solid var(--bright-grey);
+    border: 1px solid rgba(170, 170, 170, 0.4);
 }
 
 .ComponentDocs__Table__Labels {
@@ -49,6 +47,7 @@
 
 .ComponentDocs__Table__Labels th {
     padding-left: 16px;
+    font-size: 1.5rem;
 }
 
 .ComponentDocs__Table tr {
@@ -57,18 +56,15 @@
 
 .ComponentDocs__Table tr,
 .ComponentDocs__Table td {
-    border-top: 1px solid var(--bright-grey);
+    border-top: 1px solid rgba(170, 170, 170, 0.4);
     padding-left: 16px;
+    font-size: 1.5rem;
 }
 
 
 /* Small Devices, Tablets */
 
 @media only screen and (min-width: 768px) {
-    .ComponentDocs {
-        padding-top: 24px;
-        padding-bottom: 24px;
-    }
     .ComponentDocs__Description {
         line-height: 32px;
     }

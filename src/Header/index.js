@@ -8,7 +8,7 @@ import React from "react";
  *
  * @export
  * @param {string} [label] - label to be displayed on the header
- * @param {string} [url="{process.env.PUBLIC_URL}/"] - the url the header label links to
+ * @param {string} [url=process.env.PUBLIC_URL + "/"] - the url the header label links to
  * @return {object} - Header
  */
 const Header = ({ label, children, url=`${process.env.PUBLIC_URL}/` }) => (
