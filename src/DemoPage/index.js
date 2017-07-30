@@ -64,13 +64,13 @@ function App({ components, label, readme }) {
 
     componentListItems.push(
       <ListItem
-        link={`/${component}`}
+        link={`${process.env.PUBLIC_URL}/${component}`}
         label={component}
         key={component} />);
 
     routes.push(
       <Route
-        path={`/${component}`}
+        path={`${process.env.PUBLIC_URL}/${component}`}
         key={component}
         component={() => demoPage} />);
   }
