@@ -1,0 +1,16 @@
+sudo: false
+dist: trusty
+language: node_js
+node_js:
+- 6
+cache:
+  directories:
+  - node_modules
+notifications:
+  email: false
+script:
+- npm run build
+- npm run build:dist
+branches:
+  only:
+  - master
