@@ -1,7 +1,7 @@
 [![exhibit banner](https://raw.githubusercontent.com/au-re/react-exhibit/gh-pages/static/media/exhibit.png)](https://au-re.github.io/react-exhibit/)
 [![License](https://img.shields.io/packagist/l/doctrine/orm.svg?style=flat-square)](https://github.com/au-re/react-exhibit/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/react-exhibit)
-[![dependencies](https://david-dm.org/au-re/react-exhibit.svg)](https://david-dm.org/au-re/react-exhibit)
+[![dependencies Status](https://david-dm.org/au-re/react-exhibit/status.svg?style=flat-square)](https://david-dm.org/au-re/react-exhibit)
 [![build](https://travis-ci.org/au-re/react-exhibit.svg?branch=master)](https://travis-ci.org/au-re/react-exhibit)
 
 # react-exhibit
