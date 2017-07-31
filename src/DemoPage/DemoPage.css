@@ -15,18 +15,25 @@
     font-weight: 600;
     font-size: 48px;
     line-height: 88px;
-    max-width: 1200px;
-    margin: auto;
 }
 
 .Exhibit__DemoPage__Docs,
 .Exhibit__DemoPage__Showcases {
     width: 100%;
     max-width: 1200px;
-    margin: auto;
+    margin-bottom: 4px;
 }
 
-.Exhibit__LandingPage p, .Exhibit__LandingPage a {
+.Exhibit__DemoPage__Showcases .Showcase {
+    margin-bottom: 4px;
+}
+
+.Exhibit__LandingPage {
+    padding: 4px;
+}
+
+.Exhibit__LandingPage p,
+.Exhibit__LandingPage a {
     font-family: 'Arimo', sans-serif;
     font-size: 15px;
     text-align: left;
@@ -34,10 +41,16 @@
 
 .Exhibit__LandingPage a {
     font-weight: 600;
+    text-decoration: none;
     color: var(--bright-cold);
 }
 
 .Exhibit__LandingPage a:hover {
+    color: var(--accent-warm);
+}
+
+.Exhibit__LandingPage strong {
+    font-weight: 600;
     color: var(--accent-warm);
 }
 
@@ -48,6 +61,16 @@
     font-weight: 600;
     font-size: 32px;
     line-height: 60px;
+    margin: auto;
+}
+
+.Exhibit__LandingPage h3 {
+    color: var(--dark-grey);
+    text-align: left;
+    font-family: 'Arimo', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
     max-width: 1200px;
     margin: auto;
 }
@@ -76,6 +99,11 @@
         grid-template-columns: 1fr;
         grid-gap: 25px;
     }
+    .Exhibit__DemoPage__Docs,
+    .Exhibit__DemoPage__Showcases {
+        margin: auto;
+        min-width: 800px;
+    }
     .Exhibit__ComponentList {
         grid-area: 1 / 2 / 1 / 3;
     }
@@ -86,7 +114,7 @@
 
 @media only screen and (min-width: 1225px) {
     .Exhibit {
-        grid-template-columns: 0.25fr 1fr 0.25fr;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 

@@ -23,6 +23,7 @@
 }
 
 .Showcase__Source {
+    max-width: 920px;
     border: 1px solid #000;
 }
 
