@@ -14,18 +14,17 @@ import React from "react";
 function DemoPage({ name, docs, sources, demos }) {
 
   const componentDocs = docs.map((doc, idx) => (
-    <Docs
-      key={idx}
-      label={doc.name}
-      description={doc.description}
-      params={doc.params} />));
+      <Docs
+        key={idx}
+        label={doc.name}
+        description={doc.description}
+        params={doc.params} />));
 
-  const showcases = sources.map((source, idx) => (
-    <Showcase
-      key={idx}
-      demo={demos[idx].default()}
-      source={source} />
-  ));
+  const showcases = sources.map((source, idx) => {
+    let demo = (<div></div>);
+    if (typeof demos[idx].default === "function") demo = demos[idx].default();
+    return (<Showcase key={idx} demo={demo} source={source} />);
+  });
 
   return (
     <div className="Exhibit__DemoPage">

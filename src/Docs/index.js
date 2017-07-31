@@ -17,7 +17,7 @@ const ParamTable = ({ params }) => {
       <td>{param.name}</td>
       <td>{param.type.names[0]}</td>
       <td>{param.optional ? "true" : "false"}</td>
-      <td>{param.defaultvalue || ""}</td>
+      <td>{param.defaultvalue === undefined ? "" : param.defaultvalue + ""}</td>
       <td>{param.description}</td>
     </tr>));
 
@@ -52,14 +52,14 @@ const ParamTable = ({ params }) => {
  * @returns {object} - Component Docs
  */
 const Docs = ({ label, description, params }) => (
-    <div className="ComponentDocs">
-      <div className="ComponentDocs__Header">
-        <h1 className="ComponentDocs__Label">{label}</h1>
-      </div>
-      <div className="ComponentDocs__Props">
-        <p className="ComponentDocs__Description">{description}</p>
-        <ParamTable params={params} />
-      </div>
-    </div>);
+  <div className="ComponentDocs">
+    <div className="ComponentDocs__Header">
+      <h1 className="ComponentDocs__Label">{label}</h1>
+    </div>
+    <div className="ComponentDocs__Props">
+      <p className="ComponentDocs__Description">{description}</p>
+      <ParamTable params={params} />
+    </div>
+  </div>);
 
 export default Docs;
