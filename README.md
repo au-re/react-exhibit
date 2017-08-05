@@ -7,7 +7,7 @@
 # react-exhibit
 
 React components for documentation. Here to help visualize your React library.
-Used in [react-exhibit-boilerplate](https://github.com/au-re/react-exhibit-boilerplate).
+Used in [generator-react-exhibit](https://github.com/au-re/generator-react-exhibit).
 
 ## Using the components
 
