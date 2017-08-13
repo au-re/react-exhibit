@@ -1,14 +1,14 @@
 .Header {
     background-color: var(--bright-grey);
     display: grid;
-    grid-template-columns: 0.25fr 1fr 0.25fr;
+    grid-template-columns: 3rem 1fr 3rem;
 }
 
 .Header__Label {
     grid-column: 2;
     font-family: 'Arimo', sans-serif;
     line-height: 56px;
-    font-size: 17px;
+    font-size: 18px;
     text-decoration: none;
     color: #000;
 }
@@ -20,4 +20,15 @@
 .Header__Label:hover,
 .Header__Label:active {
     color: var(--grey);
+}
+
+@media only screen and (max-width: 992px) {
+    .Header {
+        background-color: var(--bright-grey);
+        display: block;
+        padding-left: 2rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }

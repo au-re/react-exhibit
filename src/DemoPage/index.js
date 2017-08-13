@@ -118,9 +118,9 @@ function App({ components, label, readme }) {
             {routes}
             <Route
               component={() =>
-                (<div>
+                (<div className="Exhibit__LandingPage">
                   <Helmet><title>{label}</title></Helmet>
-                  <div className="Exhibit__LandingPage">{readme}</div>
+                  <div>{readme}</div>
                 </div>)} />
           </Switch>
         </div>

@@ -10,7 +10,11 @@
     --bright-warm: #F9AE15;
 }
 
+html {
+    overflow-y: scroll;
+}
+
 body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
