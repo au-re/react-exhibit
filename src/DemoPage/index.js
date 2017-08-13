@@ -3,6 +3,7 @@ import "./DemoPage.css";
 import { Docs, Header, List, ListItem, Showcase } from "../index";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
+import Helmet from "react-helmet";
 import React from "react";
 
 /**
@@ -14,11 +15,11 @@ import React from "react";
 function DemoPage({ name, docs, sources, demos }) {
 
   const componentDocs = docs.map((doc, idx) => (
-      <Docs
-        key={idx}
-        label={doc.name}
-        description={doc.description}
-        params={doc.params} />));
+    <Docs
+      key={idx}
+      label={doc.name}
+      description={doc.description}
+      params={doc.params} />));
 
   const showcases = sources.map((source, idx) => {
     let demo = (<div></div>);
@@ -41,7 +42,9 @@ function DemoPage({ name, docs, sources, demos }) {
 /**
  * The Application to visualize components
  *
- * @param {object} props - { components, label }
+ * @param {array} components - list of components to be displayed
+ * @param {string} label - name of the component library
+ * @param {string} readme - readme to be displayed at page root
  * @returns {object} - Component Demo Pages
  */
 function App({ components, label, readme }) {
@@ -51,11 +54,14 @@ function App({ components, label, readme }) {
   for (const component in components) {
 
     const demoPage = (
-      <DemoPage
-        name={component}
-        docs={components[component].docs}
-        sources={components[component].source}
-        demos={components[component].demo} />);
+      <div>
+        <Helmet><title>{`${label} - ${component}`}</title></Helmet>
+        <DemoPage
+          name={component}
+          docs={components[component].docs}
+          sources={components[component].source}
+          demos={components[component].demo} />
+      </div>);
 
     componentListItems.push(
       <ListItem
@@ -87,8 +93,11 @@ function App({ components, label, readme }) {
           <Switch>
             {routes}
             <Route
-              key={0}
-              component={() => (<div className="Exhibit__LandingPage">{readme}</div>)} />
+              component={() =>
+                (<div>
+                  <Helmet><title>{label}</title></Helmet>
+                  <div className="Exhibit__LandingPage">{readme}</div>
+                </div>)} />
           </Switch>
         </div>
       </div>
