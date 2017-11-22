@@ -63,6 +63,7 @@ function requireAllDemos() {
 
 ReactDOM.render(<Demo
   readme={<Markdown>{readme}</Markdown>}
+  baseURL={process.env.PUBLIC_URL}
   label="react-exhibit"
   components={requireAllDemos()} />,
   document.getElementById("root"));

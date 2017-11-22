@@ -70,7 +70,7 @@ function DemoPage({ name, docs, sources, demos, libraryName }) {
  * @param {string} readme - readme to be displayed at page root
  * @returns {object} - Component Demo Pages
  */
-function App({ components, label, readme }) {
+function App({ components, label, baseURL="", readme }) {
   const componentListItems = [];
   const routes = [];
 
@@ -89,13 +89,13 @@ function App({ components, label, readme }) {
 
     componentListItems.push(
       <ListItem
-        link={`${process.env.PUBLIC_URL}/${component}`}
+        link={`${baseURL}/${component}`}
         label={component}
         key={component} />);
 
     routes.push(
       <Route
-        path={`${process.env.PUBLIC_URL}/${component}`}
+        path={`${baseURL}/${component}`}
         key={component}
         component={() => demoPage} />);
   }
@@ -104,7 +104,7 @@ function App({ components, label, readme }) {
     <Router>
       <div className="Exhibit">
         <div className="Exhibit__Header">
-          <Header label={label} />
+          <Header label={label} url={`${baseURL}/`} />
         </div>
         <div className="Exhibit__Content">
 
