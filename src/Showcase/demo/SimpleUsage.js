@@ -1,5 +1,5 @@
 import React from "react";
-import { Showcase } from "../../index";
+import { Showcase } from "../../lib";
 
 const demo = (<div>I'm in a showcase!</div>);
 const source = "(<div>I'm in a showcase!</div>)";

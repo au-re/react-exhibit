@@ -1,4 +1,4 @@
-import { Header } from "../index";
+import { Header } from "../lib";
 import React from "react";
 import ReactDOM from "react-dom";
 import { MemoryRouter as Router } from "react-router-dom";

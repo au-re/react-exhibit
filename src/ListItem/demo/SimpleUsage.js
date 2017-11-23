@@ -1,4 +1,4 @@
-import { ListItem } from "../../index";
+import { ListItem } from "../../lib";
 import React from "react";
 
 export default () => (

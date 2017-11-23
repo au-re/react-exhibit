@@ -1,4 +1,4 @@
-import { Docs } from "../../index";
+import { Docs } from "../../lib";
 import React from "react";
 
 const params = [

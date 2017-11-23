@@ -1,4 +1,4 @@
-import { ListItem } from "../index";
+import { ListItem } from "../lib";
 import React from "react";
 import ReactDOM from "react-dom";
 import { MemoryRouter as Router } from "react-router-dom";

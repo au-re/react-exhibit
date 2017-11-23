@@ -1,6 +1,6 @@
 import "./DemoPage.css";
 
-import { Docs, Header, List, ListItem, Showcase } from "../index";
+import { Docs, Header, List, ListItem, Showcase } from "../lib";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import Helmet from "react-helmet";
@@ -10,7 +10,7 @@ import React from "react";
  * The source code contains relative paths, replace them with an absolute path
  * to the library name.
  * @example
- * parseDependency('import X from "../../index.js"');
+ * parseDependency('import X from "../../lib.js"');
  * > 'import X from "libraryName"'
  *
  * @param {string} source - the source code
@@ -18,7 +18,7 @@ import React from "react";
  * @returns {string} source where the dependency is replaced the libraryName
  */
 function parseDependency(source, libraryName) {
-  return source.replace(/(\.\.\/)+index(.js)?/g, libraryName);
+  return source.replace(/(\.\.\/)+lib(.js)?/g, libraryName);
 }
 
 /**

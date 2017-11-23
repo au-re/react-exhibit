@@ -1,4 +1,4 @@
-import { List, ListItem } from "../../index";
+import { List, ListItem } from "../../lib";
 
 import React from "react";
 
