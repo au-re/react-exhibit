@@ -1,11 +1,11 @@
 {
-  "short_name": "Exhibit",
-  "name": "Sample React Component Library",
+  "short_name": "react-exhibit",
+  "name": "A React component library for component libraries",
   "icons": [
     {
       "src": "favicon.ico",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/x-icon"
     }
   ],
   "start_url": "./index.html",
