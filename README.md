@@ -11,7 +11,7 @@ Used in [generator-react-exhibit](https://github.com/au-re/generator-react-exhib
 
 ## Using the components
 
-In you react project run:
+In your React project run:
 
 ```shell
 npm i -S react-exhibit
@@ -21,16 +21,10 @@ Import the components you want from "react-exhibit".
 
 ```jsx
 import React from "react";
-import { Showcase } from "react-exhibit";
-import "../node_modules/react-exhibit/dist/css/main.css";
+import { Icon } from "react-exhibit";
+import "../node_modules/react-exhibit/lib/css/main.css";
 
-const demo = (<div>I'm in a showcase!</div>);
-const source = "(<div>I'm in a showcase!</div>)";
-
-export default () => (
-  <Showcase
-    demo={demo}
-    source={source} />);
+export default () => (<Icon />);
 ```
 
 You can view the documentation for this library [here](https://au-re.github.io/react-exhibit/).
