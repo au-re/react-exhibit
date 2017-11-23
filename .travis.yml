@@ -10,9 +10,9 @@ cache:
 notifications:
   email: false
 script:
-- npm run check:staged
+- npm run check
 - npm run build
-- npm run build:dist
+- npm run build:lib
 branches:
   only:
   - master
