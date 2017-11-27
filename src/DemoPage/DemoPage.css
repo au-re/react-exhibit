@@ -1,3 +1,25 @@
+.ReactExhibit__Sidebar{
+    padding-top: 80px;
+    height: 100%;
+    min-width: 280px;
+    background-color: var(--application-bright);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .Exhibit__ComponentList {
     padding: 1rem;
     border-bottom: 1px solid var(--bright-grey);

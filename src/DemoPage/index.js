@@ -1,10 +1,11 @@
 import "./DemoPage.css";
 
-import { Docs, Header, List, ListItem, Showcase } from "../lib";
+import { ApplicationTitle, Docs, GithubCorner, Header, HeaderTitle, List, ListItem, Showcase } from "../lib";
+import React, { Component } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import Helmet from "react-helmet";
-import React from "react";
+import Sidebar from "react-sidebar";
 
 /**
  * The source code contains relative paths, replace them with an absolute path
@@ -63,69 +64,111 @@ function DemoPage({ name, docs, sources, demos, libraryName }) {
 }
 
 /**
- * The Application to visualize components
  *
- * @param {array} components - list of components to be displayed
- * @param {string} label - name of the component library
- * @param {string} readme - readme to be displayed at page root
- * @returns {object} - Component Demo Pages
+ *
+ * @class ReactExhibit
+ * @extends {Component}
  */
-function App({ components, label, baseURL="", readme }) {
-  const componentListItems = [];
-  const routes = [];
+class ReactExhibit extends Component {
 
-  for (const component in components) {
+  /**
+   * Creates an instance of ReactExhibit.
+   * @param {any} props
+   * @memberof ReactExhibit
+   */
+  constructor(props) {
+    super(props);
 
-    const demoPage = (
-      <div>
-        <Helmet><title>{`${label} - ${component}`}</title></Helmet>
-        <DemoPage
-          name={component}
-          libraryName={label}
-          docs={components[component].docs}
-          sources={components[component].source}
-          demos={components[component].demo} />
-      </div>);
+    this.state = {
+      sidebarOpen: false
+    };
 
-    componentListItems.push(
-      <ListItem
-        link={`${baseURL}/${component}`}
-        label={component}
-        key={component} />);
-
-    routes.push(
-      <Route
-        path={`${baseURL}/${component}`}
-        key={component}
-        component={() => demoPage} />);
+    this.toggleSideBar = this.toggleSideBar.bind(this);
   }
 
-  return (
-    <Router>
-      <div className="Exhibit">
-        <div className="Exhibit__Header">
-          <Header label={label} url={`${baseURL}/`} />
-        </div>
-        <div className="Exhibit__Content">
+  /**
+   *
+   * @param {any} open
+   * @memberof ReactExhibit
+   */
+  toggleSideBar(open) {
+    this.setState({ sidebarOpen: open });
+  }
 
-          <div className="Exhibit__ComponentList">
-            <List label="Components">
+  /**
+   * Render ReactExhibit
+   *
+   * @returns {object}
+   * @memberof ReactExhibit
+   */
+  render() {
+    const { components, label, baseURL = "", readme } = this.props;
+
+    const componentListItems = [];
+    const routes = [];
+
+    for (const component in components) {
+
+      const demoPage = (
+        <div>
+          <Helmet><title>{`${label} - ${component}`}</title></Helmet>
+          <DemoPage
+            name={component}
+            libraryName={label}
+            docs={components[component].docs}
+            sources={components[component].source}
+            demos={components[component].demo} />
+        </div>);
+
+      componentListItems.push(
+        <ListItem
+          link={`${baseURL}/${component}`}
+          label={component}
+          key={component} />);
+
+      routes.push(
+        <Route
+          path={`${baseURL}/${component}`}
+          key={component}
+          component={() => demoPage} />);
+    }
+
+    return (
+      <Router>
+        <div>
+          <GithubCorner style={{ position: "fixed", zIndex: 10 }} size="80" bannerColor="#F9AE15" />
+          <Header>
+            <HeaderTitle title={label} href="/" />
+          </Header>
+          <Header sub bright>
+            <ApplicationTitle title="Demo Component" onClick={this.toggleSideBar} />
+          </Header>
+          <Sidebar
+            docked
+            style={{
+
+            }}
+            sidebar={<div className="ReactExhibit__Sidebar">
               {componentListItems}
-            </List>
-          </div>
-
-          <Switch>
-            {routes}
-            <Route
-              component={() =>
-                (<div className="Exhibit__LandingPage">
-                  <Helmet><title>{label}</title></Helmet>
-                  <div>{readme}</div>
-                </div>)} />
-          </Switch>
+            </div>}
+            open={this.state.sidebarOpen}
+            onSetOpen={this.toggleSideBar}>
+            <div>
+              <Switch>
+                {routes}
+                <Route
+                  component={() =>
+                    (<div className="Exhibit__LandingPage">
+                      <Helmet><title>{label}</title></Helmet>
+                      <div>{readme}</div>
+                    </div>)} />
+              </Switch>
+            </div>
+          </Sidebar>
         </div>
-      </div>
-    </Router>);
+      </Router>
+    );
+  }
 }
 
-export default App;
+export default ReactExhibit;

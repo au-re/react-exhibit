@@ -1,23 +1,39 @@
 import "./Header.css";
 
-import { Link } from "react-router-dom";
-import React from "react";
+import React, { Component } from "react";
 
 /**
- * A simple header with a label
+ * Simple header component
  *
- * @export
- * @param {string} [label] - label to be displayed on the header
- * @param {string} [url="/"] - the url the header label links to
- * @return {object} - Header
+ * @class Header
+ * @extends {Component}
  */
-const Header = ({ label, children, url="/" }) => (
-  <div className="Header">
-    <Link
-      className="Header__Label"
-      to={url}>
-      {label}
-    </Link>
-  </div>);
+class Header extends Component {
+
+  /**
+   * Render the Header Component
+   *
+   * @return {object} Header
+   * @memberof Header
+   */
+  render() {
+    const { children, sub, bright } = this.props;
+
+    const headerClass = sub && bright
+      ? "Header--ApplicationBright"
+      : sub
+        ? "Header--ApplicationDark"
+        : "";
+
+    return (
+      <div className={`ReactExhibit__Header ${headerClass}`}>
+        <div className="Header__Banner">
+          {children}
+        </div>
+      </div>);
+  }
+}
 
 export default Header;
+export { HeaderTitle } from "./HeaderTitle";
+export { ApplicationTitle } from "./ApplicationTitle";

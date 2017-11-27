@@ -1,34 +1,23 @@
-.Header {
-    background-color: var(--bright-grey);
-    display: grid;
-    grid-template-columns: 3rem 1fr 3rem;
+.ReactExhibit__Header {
+    background-color: var(--system);
+    position: sticky;
+    left: 0;
+    right: 0;
+    z-index: 8;
 }
 
-.Header__Label {
-    grid-column: 2;
-    font-family: 'Arimo', sans-serif;
-    line-height: 56px;
-    font-size: 18px;
-    text-decoration: none;
-    color: #000;
+.ReactExhibit__Header.Header--ApplicationDark {
+    background-color: var(--application-dark);
 }
 
-.Header__Label:visited {
-    color: #000;
+.ReactExhibit__Header.Header--ApplicationBright {
+    background-color: var(--application-bright);
 }
 
-.Header__Label:hover,
-.Header__Label:active {
-    color: var(--grey);
-}
-
-@media only screen and (max-width: 992px) {
-    .Header {
-        background-color: var(--bright-grey);
-        display: block;
-        padding-left: 2rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
+.ReactExhibit__Header .Header__Banner {
+    display: flex;
+    height: 40px;
+    margin: 0 auto;
+    max-width: 1400px;
+    position: relative;
 }

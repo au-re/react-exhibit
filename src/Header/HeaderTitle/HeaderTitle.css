@@ -1,0 +1,26 @@
+.ReactExhibit__HeaderTitle {
+    float: left;
+    padding: 4px 8px 0 16px;
+    border-right: 1px solid #3C3C3C;
+    height: 40px;
+    box-sizing: border-box;
+    flex: none;
+    color: #FAFAFA;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.ReactExhibit__HeaderTitle:hover {
+    color: #ccc;
+}
+
+.ReactExhibit__HeaderTitle .HeaderTitle__Image {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+}
+
+.ReactExhibit__HeaderTitle .HeaderTitle__Description {
+    margin: 8px;
+    font-size: 14px;
+}

@@ -1,0 +1,16 @@
+.ReactExhibit__ApplicationTitle {
+    font-size: 22px;
+    cursor: pointer;
+    padding: 0px 8px 0 16px;
+    line-height: 40px;
+    color: var(--gray-bright);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ApplicationTitle__MenuIcon {
+    font-weight: bolder;
+    margin-right: 16px;
+    color: var(--blue);
+}

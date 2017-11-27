@@ -1,13 +1,14 @@
 .Exhibit__Icon__Box {
     width: 0px;
     height: 0px;
+    cursor: pointer;
 }
 
 .Exhibit__Icon__Box.Box--Outer {
     box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
     position: relative;
-    border-bottom: 120px solid var(--bright-cold);
-    border-left: 120px solid var(--dark-cold);
+    border-bottom: 120px solid var(--blue);
+    border-left: 120px solid var(--purple);
 }
 
 .Exhibit__Icon__Box.Box--Inner {
@@ -15,8 +16,8 @@
     position: absolute;
     margin-left: -100px;
     margin-top: 20px;
-    border-bottom: 80px solid var(--dark-warm);
-    border-left: 80px solid var(--bright-warm);
+    border-bottom: 80px solid var(--orange);
+    border-left: 80px solid var(--yellow);
     transition: transform .25s ease-in-out;
 }
 
@@ -40,6 +41,6 @@
 .Exhibit__Icon__Circle.Circle--Top {
     margin-top: 92px;
     margin-left: -68px;
-    background-color: var(--accent-warm);
+    background-color: var(--link);
     transition: transform .25s ease-in-out;
 }
