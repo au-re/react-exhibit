@@ -1,0 +1,33 @@
+.ReactExhibit__ApplicationListDropdown,
+.ReactExhibit__ApplicationListDropdown:active,
+.ReactExhibit__ApplicationListDropdown:focus {
+    font-family: 'Arimo', sans-serif;
+    display: block;
+    text-decoration: none;
+    font-style: normal;
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 40px;
+    color: var(--text-bright);
+    cursor: pointer;
+}
+
+.ReactExhibit__ApplicationListDropdown .ApplicationListDropdown__Label {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 16px;
+}
+
+.ReactExhibit__ApplicationListDropdown .ApplicationListDropdown__Label:hover {
+    background-color: var(--blue);
+    text-decoration: none;
+    color: #FFF;
+}
+
+.ReactExhibit__ApplicationListDropdown .ApplicationListDropdown__Label {
+    padding-left: 1.2rem;
+}
+
+.ReactExhibit__ApplicationListDropdown .ApplicationListItem__Label {
+    padding-left: 1.4rem;
+}

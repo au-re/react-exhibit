@@ -1,0 +1,33 @@
+.ReactExhibit__ApplicationListItem,
+.ReactExhibit__ApplicationListItem:active,
+.ReactExhibit__ApplicationListItem:focus {
+    font-family: 'Arimo', sans-serif;
+    display: block;
+    text-decoration: none;
+    font-style: normal;
+    white-space: nowrap;
+    color: var(--text-bright);
+    cursor: pointer;
+    padding-left: 1.2rem;
+}
+
+.ReactExhibit__ApplicationListItem:hover {
+    background-color: var(--blue);
+    text-decoration: none;
+    color: #FFF;
+}
+
+.ReactExhibit__ApplicationListItem.ApplicationListItem--Selected,
+.ReactExhibit__ApplicationListItem.ApplicationListItem--Selected:focus,
+.ReactExhibit__ApplicationListItem.ApplicationListItem--Selected:active,
+.ReactExhibit__ApplicationListItem.ApplicationListItem--Selected:hover {
+    background-color: var(--tile-bright);
+    border-left: 4px solid var(--blue);
+    color: #000;
+    font-size: 16px;
+}
+
+.ReactExhibit__ApplicationListItem .ApplicationListItem__Label {
+    font-size: 16px;
+    line-height: 40px;
+}

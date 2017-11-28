@@ -1,6 +1,6 @@
-import "./DemoPage.css";
+import "./Exhibit.css";
 
-import { ApplicationTitle, Docs, GithubCorner, Header, HeaderTitle, List, ListItem, Showcase } from "../lib";
+import { SystemTitle, Docs, GithubCorner, SystemHeader, ApplicationListItem, Showcase } from "../lib";
 import React, { Component } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
@@ -121,7 +121,7 @@ class ReactExhibit extends Component {
         </div>);
 
       componentListItems.push(
-        <ListItem
+        <ApplicationListItem
           link={`${baseURL}/${component}`}
           label={component}
           key={component} />);
@@ -135,22 +135,19 @@ class ReactExhibit extends Component {
 
     return (
       <Router>
-        <div>
+        <div className="ReactExhibit">
           <GithubCorner style={{ position: "fixed", zIndex: 10 }} size="80" bannerColor="#F9AE15" />
-          <Header>
-            <HeaderTitle title={label} href="/" />
-          </Header>
-          <Header sub bright>
+          <SystemHeader>
+            <SystemTitle title={label} href="/" />
+          </SystemHeader>
+{/*           <Header sub bright>
             <ApplicationTitle title="Demo Component" onClick={this.toggleSideBar} />
-          </Header>
+          </Header> */}
           <Sidebar
             docked
-            style={{
-
-            }}
-            sidebar={<div className="ReactExhibit__Sidebar">
-              {componentListItems}
-            </div>}
+            shadow={false}
+            sidebarClassName="ReactExhibit__Sidebar"
+            sidebar={componentListItems}
             open={this.state.sidebarOpen}
             onSetOpen={this.toggleSideBar}>
             <div>

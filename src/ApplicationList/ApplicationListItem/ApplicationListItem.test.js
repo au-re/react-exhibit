@@ -1,4 +1,4 @@
-import { ListItem } from "../lib";
+import { ApplicationListItem } from "../../lib";
 import React from "react";
 import ReactDOM from "react-dom";
 import { MemoryRouter as Router } from "react-router-dom";
@@ -7,10 +7,10 @@ it("renders without crashing", () => {
   const div = document.createElement("div");
 
   ReactDOM.render(<Router>
-    <ListItem />
+    <ApplicationListItem />
   </Router>, div);
 
   ReactDOM.render(<Router>
-    <ListItem label="demo" link="/" />
+    <ApplicationListItem label="demo" link="/" />
   </Router>, div);
 });

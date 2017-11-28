@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with a link 1`] = `
+<a
+  className="ReactExhibit__SystemTitle"
+  href="/"
+>
+  <span
+    className="SystemTitle__Description"
+  />
+</a>
+`;
+
+exports[`renders with a title 1`] = `
+<a
+  className="ReactExhibit__SystemTitle"
+>
+  <span
+    className="SystemTitle__Description"
+  >
+    hello world
+  </span>
+</a>
+`;
+
+exports[`renders with an img 1`] = `
+<a
+  className="ReactExhibit__SystemTitle"
+>
+  <img
+    alt=""
+    className="SystemTitle__Image"
+    src="/test.jpg"
+  />
+  <span
+    className="SystemTitle__Description"
+  />
+</a>
+`;
+
+exports[`renders without parameters 1`] = `
+<a
+  className="ReactExhibit__SystemTitle"
+>
+  <span
+    className="SystemTitle__Description"
+  />
+</a>
+`;

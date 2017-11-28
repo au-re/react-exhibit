@@ -37,9 +37,9 @@ class GithubCorner extends Component {
         <svg width={size} height={size} viewBox="0 0 250 250" fill={octoColor}
           style={{ ...defaultStyle, ...cornerStyle, ...style }}>
           <path d={bannerPath} fill={bannerColor} />
-          <path class="octo-arm" d={armPath}
+          <path className="octo-arm" d={armPath}
             style={{ WebkitTransformOrigin: "130px 106px", transformOrigin: "130px 106px" }} />
-          <path class="octo-body" d={bodyPath} />
+          <path className="octo-body" d={bodyPath} />
         </svg>
       </a>);
   }

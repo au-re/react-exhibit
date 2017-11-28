@@ -1,8 +1,8 @@
 .ReactExhibit__Sidebar{
-    padding-top: 80px;
-    height: 100%;
+    padding-top: 88px;
     min-width: 280px;
     background-color: var(--application-bright);
+    padding-right: 16px;
 }
 
 

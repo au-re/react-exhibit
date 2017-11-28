@@ -1,6 +1,6 @@
 /*  eslint-disable */
 
-import { Demo } from "./lib";
+import { Exhibit } from "./lib";
 import Markdown from "markdown-to-jsx";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -62,7 +62,7 @@ function requireAllDemos() {
 
 /* RENDER THE DEMO DATA */
 
-ReactDOM.render(<Demo
+ReactDOM.render(<Exhibit
   readme={<Markdown>{readme}</Markdown>}
   baseURL={process.env.PUBLIC_URL}
   label="react-exhibit"

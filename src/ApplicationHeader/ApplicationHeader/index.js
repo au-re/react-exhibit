@@ -3,18 +3,18 @@ import "./Header.css";
 import React, { Component } from "react";
 
 /**
- * Simple header component
+ * System Header
  *
- * @class Header
+ * @class SystemHeader
  * @extends {Component}
  */
-class Header extends Component {
+class SystemHeader extends Component {
 
   /**
-   * Render the Header Component
+   * Render the SystemHeader Component
    *
-   * @return {object} Header
-   * @memberof Header
+   * @return {object} SystemHeader
+   * @memberof SystemHeader
    */
   render() {
     const { children, sub, bright } = this.props;
@@ -34,6 +34,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
-export { HeaderTitle } from "./HeaderTitle";
-export { ApplicationTitle } from "./ApplicationTitle";
+export default SystemHeader;

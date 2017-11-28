@@ -1,8 +1,9 @@
-.ReactExhibit__HeaderTitle {
+.ReactExhibit__SystemTitle {
     float: left;
-    padding: 4px 8px 0 16px;
+    padding: 0px 8px 0 16px;
     border-right: 1px solid #3C3C3C;
     height: 40px;
+    line-height: 40px;
     box-sizing: border-box;
     flex: none;
     color: #FAFAFA;
@@ -10,17 +11,17 @@
     text-decoration: none;
 }
 
-.ReactExhibit__HeaderTitle:hover {
+.ReactExhibit__SystemTitle:hover {
     color: #ccc;
 }
 
-.ReactExhibit__HeaderTitle .HeaderTitle__Image {
+.ReactExhibit__SystemTitle .SystemTitle__Image {
     width: 32px;
     height: 32px;
     vertical-align: middle;
 }
 
-.ReactExhibit__HeaderTitle .HeaderTitle__Description {
-    margin: 8px;
+.ReactExhibit__SystemTitle .SystemTitle__Description {
+    margin: 0 8px 0 8px;
     font-size: 14px;
 }
