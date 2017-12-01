@@ -1,8 +1,8 @@
 import "./Exhibit.css";
 
-import { SystemTitle, Docs, GithubCorner, SystemHeader, ApplicationListItem, Showcase } from "../lib";
+import { SystemTitle, Docs, GithubCorner, SystemHeader, ApplicationListItem, Showcase, ApplicationHeader, ApplicationTitle } from "../lib";
 import React, { Component } from "react";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 
 import Helmet from "react-helmet";
 import Sidebar from "react-sidebar";
@@ -63,6 +63,9 @@ function DemoPage({ name, docs, sources, demos, libraryName }) {
     </div>);
 }
 
+
+const mql = window.matchMedia(`(min-width: 800px)`);
+
 /**
  *
  *
@@ -80,10 +83,38 @@ class ReactExhibit extends Component {
     super(props);
 
     this.state = {
-      sidebarOpen: false
+      mql,
+      sidebarDocked: true,
+      sidebarOpen: true
     };
 
+    this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
     this.toggleSideBar = this.toggleSideBar.bind(this);
+  }
+  /**
+   *
+   *
+   * @memberof ReactExhibit
+   */
+  componentWillMount() {
+    mql.addListener(this.mediaQueryChanged);
+    this.setState({ mql, sidebarDocked: mql.matches });
+  }
+  /**
+   *
+   *
+   * @memberof ReactExhibit
+   */
+  componentWillUnmount() {
+    this.state.mql.removeListener(this.mediaQueryChanged);
+  }
+  /**
+   *
+   *
+   * @memberof ReactExhibit
+   */
+  mediaQueryChanged() {
+    this.setState({ sidebarDocked: this.state.mql.matches });
   }
 
   /**
@@ -92,7 +123,7 @@ class ReactExhibit extends Component {
    * @memberof ReactExhibit
    */
   toggleSideBar(open) {
-    this.setState({ sidebarOpen: open });
+    this.setState({ sidebarOpen: !this.state.sidebarOpen, sidebarDocked: !this.state.sidebarDocked });
   }
 
   /**
@@ -102,7 +133,7 @@ class ReactExhibit extends Component {
    * @memberof ReactExhibit
    */
   render() {
-    const { components, label, baseURL = "", readme } = this.props;
+    const { components, label, baseURL = "", readme, location } = this.props;
 
     const componentListItems = [];
     const routes = [];
@@ -113,7 +144,6 @@ class ReactExhibit extends Component {
         <div>
           <Helmet><title>{`${label} - ${component}`}</title></Helmet>
           <DemoPage
-            name={component}
             libraryName={label}
             docs={components[component].docs}
             sources={components[component].source}
@@ -127,45 +157,47 @@ class ReactExhibit extends Component {
           key={component} />);
 
       routes.push(
-        <Route
+        <Route exact
           path={`${baseURL}/${component}`}
           key={component}
           component={() => demoPage} />);
     }
 
+    const { sidebarDocked } = this.state;
+
     return (
-      <Router>
-        <div className="ReactExhibit">
-          <GithubCorner style={{ position: "fixed", zIndex: 10 }} size="80" bannerColor="#F9AE15" />
-          <SystemHeader>
-            <SystemTitle title={label} href="/" />
-          </SystemHeader>
-{/*           <Header sub bright>
-            <ApplicationTitle title="Demo Component" onClick={this.toggleSideBar} />
-          </Header> */}
-          <Sidebar
-            docked
-            shadow={false}
-            sidebarClassName="ReactExhibit__Sidebar"
-            sidebar={componentListItems}
-            open={this.state.sidebarOpen}
-            onSetOpen={this.toggleSideBar}>
-            <div>
-              <Switch>
-                {routes}
-                <Route
-                  component={() =>
-                    (<div className="Exhibit__LandingPage">
-                      <Helmet><title>{label}</title></Helmet>
-                      <div>{readme}</div>
-                    </div>)} />
-              </Switch>
-            </div>
-          </Sidebar>
-        </div>
-      </Router>
+      <div className="ReactExhibit">
+        <GithubCorner style={{ position: "fixed", zIndex: 10 }} size="80" bannerColor="#F9AE15" />
+        <SystemHeader>
+          <SystemTitle title={label} href={`/${baseURL}`} />
+        </SystemHeader>
+        <ApplicationHeader light collapsed={sidebarDocked} onClick={this.toggleSideBar}>
+          <ApplicationTitle title={location.pathname} />
+        </ApplicationHeader>
+        <Sidebar
+          docked={sidebarDocked}
+          shadow={false}
+          sidebarClassName="ReactExhibit__Sidebar"
+          contentClassName="ReactExhibit__Sidebar__Content"
+          sidebar={componentListItems}
+          open={sidebarDocked}
+          onSetOpen={this.toggleSideBar}>
+          <div className="ReactExhibit__Content">
+            <Switch>
+              {routes}
+              <Route exact path={`${baseURL}/`}
+                component={() =>
+                  (<div className="Exhibit__LandingPage">
+                    <Helmet><title>{label}</title></Helmet>
+                    <div>{readme}</div>
+                  </div>)} />
+              <Route component={() => <Redirect to="/" push />} />
+            </Switch>
+          </div>
+        </Sidebar>
+      </div>
     );
   }
 }
 
-export default ReactExhibit;
+export default withRouter(ReactExhibit);

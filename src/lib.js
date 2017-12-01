@@ -10,6 +10,7 @@ import Showcase from "./Showcase";
 
 export * from "./SystemHeader";
 export * from "./ApplicationList";
+export * from "./ApplicationHeader";
 
 export {
   Exhibit,

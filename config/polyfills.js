@@ -15,6 +15,17 @@ require('whatwg-fetch');
 // It will use the native implementation if it's present and isn't buggy.
 Object.assign = require('object-assign');
 
+// add pollyfill for matchMedia
+if (typeof matchMedia === 'undefined') {
+  window.matchMedia = function () {
+    return ({
+      matches: true,
+      addListener: function () { },
+      removeListener: function () { }
+    });
+  };
+}
+
 // In tests, polyfill requestAnimationFrame since jsdom doesn't provide it yet.
 // We don't polyfill it in the browser--this is user's responsibility.
 if (process.env.NODE_ENV === 'test') {

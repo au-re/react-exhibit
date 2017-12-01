@@ -1,11 +1,11 @@
-import Header from "./index";
+import GithubCorner from "./index";
 import React from "react";
 import { shallow } from "enzyme";
 
 it("renders without parameters", () => {
-  expect(shallow(<Header />)).toMatchSnapshot();
+  expect(shallow(<GithubCorner />)).toMatchSnapshot();
 });
 
-it("renders with children", () => {
-  expect(shallow(<Header><div>test</div></Header>)).toMatchSnapshot();
+it("renders with parameters", () => {
+  expect(shallow(<GithubCorner href="/" size="50" octoColor="#333" bannerColor="#151513" />)).toMatchSnapshot();
 });

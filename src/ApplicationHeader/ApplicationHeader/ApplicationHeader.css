@@ -1,0 +1,27 @@
+.ReactExhibit__ApplicationHeader {
+    background-color: var(--application-bright);
+    position: sticky;
+    left: 0;
+    right: 0;
+    z-index: 8;
+    display: flex;
+}
+
+.ReactExhibit__ApplicationHeader .ApplicationHeader__MenuIcon {
+    line-height: 40px;
+    font-weight: bolder;
+    font-size: 21px;
+    cursor: pointer;
+    margin: 0 16px 0 16px;
+    color: var(--blue);
+    width: 24px;
+    text-align: center;
+}
+
+.ReactExhibit__ApplicationHeader .ApplicationHeader__Content {
+    transition: all 0.3s ease-out 0s;
+}
+
+.ReactExhibit__ApplicationHeader .ApplicationHeader__Content--Collapsed {
+    margin-left: 270px;
+}

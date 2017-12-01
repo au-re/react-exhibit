@@ -6,6 +6,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import readme from "../README.md";
 import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter as Router } from "react-router-dom";
 
 /* FETCH THE DEMO DATA */
 
@@ -62,11 +63,14 @@ function requireAllDemos() {
 
 /* RENDER THE DEMO DATA */
 
-ReactDOM.render(<Exhibit
-  readme={<Markdown>{readme}</Markdown>}
-  baseURL={process.env.PUBLIC_URL}
-  label="react-exhibit"
-  components={requireAllDemos()} />,
+ReactDOM.render(
+  <Router>
+    <Exhibit
+      readme={<Markdown>{readme}</Markdown>}
+      baseURL={process.env.PUBLIC_URL}
+      label="react-exhibit"
+      components={requireAllDemos()} />
+  </Router>,
   document.getElementById("root"));
 
 registerServiceWorker();

@@ -17,12 +17,11 @@ export class ApplicationTitle extends Component {
    * @memberof ApplicationTitle
    */
   render() {
-    const { title, onClick } = this.props;
+    const { title } = this.props;
 
     return (
-      <div className="ReactExhibit__ApplicationTitle" onClick={onClick}>
-        <span className="ApplicationTitle__MenuIcon">=</span>
-        <span className="ApplicationTitle__Description">{title}</span>
-      </div>);
+      <span className="ReactExhibit__ApplicationTitle">
+        {title}
+      </span>);
   }
 }

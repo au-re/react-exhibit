@@ -1,37 +1,36 @@
-import "./Header.css";
+import "./ApplicationHeader.css";
 
 import React, { Component } from "react";
 
 /**
- * System Header
+ * A sub header
  *
- * @class SystemHeader
+ * @class ApplicationHeader
  * @extends {Component}
  */
-class SystemHeader extends Component {
+export class ApplicationHeader extends Component {
 
   /**
-   * Render the SystemHeader Component
+   * Render the ApplicationHeader Component
    *
-   * @return {object} SystemHeader
-   * @memberof SystemHeader
+   * @return {object} ApplicationHeader
+   * @memberof ApplicationHeader
    */
   render() {
-    const { children, sub, bright } = this.props;
+    const { children, light, collapsed, onClick } = this.props;
 
-    const headerClass = sub && bright
-      ? "Header--ApplicationBright"
-      : sub
-        ? "Header--ApplicationDark"
-        : "";
+    const headerClass = light
+      ? "ApplicationHeader--Light"
+      : "ApplicationHeader--Dark";
 
     return (
-      <div className={`ReactExhibit__Header ${headerClass}`}>
-        <div className="Header__Banner">
-          {children}
+      <div className={`ReactExhibit__ApplicationHeader ${headerClass}`}>
+        <div className="ApplicationHeader__MenuIcon" onClick={onClick}>
+          {collapsed ? "x" : "="}
         </div>
+        <span className={`ApplicationHeader__Content ${collapsed ? "ApplicationHeader__Content--Collapsed" : ""}`}>
+          {children}
+        </span>
       </div>);
   }
 }
-
-export default SystemHeader;

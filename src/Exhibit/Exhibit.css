@@ -1,17 +1,17 @@
-.ReactExhibit__Sidebar{
+.ReactExhibit__Sidebar {
     padding-top: 88px;
-    min-width: 280px;
+    min-width: 320px;
     background-color: var(--application-bright);
     padding-right: 16px;
 }
 
+.ReactExhibit__Sidebar__Content {
+    overflow-y: auto !important;
+}
 
-
-
-
-
-
-
+.ReactExhibit__Content {
+    margin-top: 80px;
+}
 
 
 
@@ -108,6 +108,7 @@
 .Exhibit__LandingPage img {
     max-width: 100%;
 }
+
 
 /* Small Devices, Tablets */
 
