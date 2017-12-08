@@ -1,6 +1,6 @@
 import "./DemoPage.css";
 
-import { Docs, Showcase } from "../../lib";
+import { ContentTile, Docs, Showcase } from "../../lib";
 import React, { Component } from "react";
 
 import Helmet from "react-helmet";
@@ -61,12 +61,16 @@ export class DemoPage extends Component {
     return (
       <div className="ReactExhibit__DemoPage">
         <Helmet><title>{`${libraryName} - ${name}`}</title></Helmet>
-        <div className="">
-          {componentDocs}
-        </div>
-        <div className="">
-          {showcases}
-        </div>
+        <ContentTile>
+          <div className="">
+            {componentDocs}
+          </div>
+        </ContentTile>
+        <ContentTile>
+          <div className="">
+            {showcases}
+          </div>
+        </ContentTile>
       </div>);
   }
 }

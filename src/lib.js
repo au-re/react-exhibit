@@ -1,7 +1,8 @@
 import "./index.css";
 
-import Exhibit from "./Exhibit";
+import ContentTile from "./ContentTile";
 import Docs from "./Docs";
+import Exhibit from "./Exhibit";
 import GithubCorner from "./GithubCorner";
 import Icon from "./Icon";
 import Showcase from "./Showcase";
@@ -18,4 +19,5 @@ export {
   GithubCorner,
   Icon,
   Showcase,
+  ContentTile
 };

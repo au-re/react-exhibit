@@ -1,0 +1,15 @@
+.ReactExhibit__ContentTile {
+    background-color: var(--tile-bright);
+    padding: 0px 16px 0 16px;
+    margin: 4px;
+}
+
+.ReactExhibit__ContentTile .ContentTile__Header {
+    min-height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+}
+
+.ReactExhibit__ContentTile .ContentTile__Content {
+    padding: 0px 0px 40px 0px;
+}

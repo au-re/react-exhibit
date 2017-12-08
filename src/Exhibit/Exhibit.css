@@ -8,7 +8,7 @@
 
 .ReactExhibit__Sidebar__Content {
     overflow-y: auto !important;
-    background-color: pink;
+    background-color: var(--application-bright);
     display: flex;
     flex-direction: column;
 }
