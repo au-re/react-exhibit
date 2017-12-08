@@ -18,6 +18,16 @@
     padding-right: 16px;
 }
 
+.ReactExhibit__ApplicationListDropdown .ApplicationListDropdown__Label--Active {
+    background-color: var(--blue);
+    text-decoration: none;
+    color: #FFF;
+}
+
+.ReactExhibit__ApplicationListDropdown>.ReactExhibit__ApplicationListItem {
+    background-color: var(--tile-bright);
+}
+
 .ReactExhibit__ApplicationListDropdown .ApplicationListDropdown__Label:hover {
     background-color: var(--blue);
     text-decoration: none;

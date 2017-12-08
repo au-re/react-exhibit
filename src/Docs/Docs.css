@@ -1,38 +1,8 @@
-.ComponentDocs {
-    background-color: #FFF;
-    overflow: hidden;
-}
-
-.ComponentDocs__Label {
-    font-family: 'Arimo', sans-serif;
-    text-align: left;
-    line-height: 30px;
-    text-overflow: ellipsis;
-    color: var(--dark-grey);
-    font-weight: 600;
-    font-size: 20px;
-    margin: 0;
-}
-
-.ComponentDocs__Description {
-    text-align: left;
-    font-family: 'Arimo', sans-serif;
-    font-size: 15px;
-    line-height: 24px;
-    color: var(--dark-grey);
-    font-weight: normal;
-}
-
-.ComponentDocs__Props {
-    padding-top: 0;
-    overflow: hidden;
-}
-
-.ComponentDocs__TableWrapper {
+.ReactExhibit__Docs .Docs__TableWrapper {
     overflow-x: auto;
 }
 
-.ComponentDocs__Table {
+.ReactExhibit__Docs .Docs__Table {
     font-family: 'Arimo', sans-serif;
     width: 100%;
     text-align: left;
@@ -40,22 +10,27 @@
     border: 1px solid rgba(170, 170, 170, 0.4);
 }
 
-.ComponentDocs__Table__Labels {
-    background-color: var(--grey);
+.ReactExhibit__Docs .Docs__Table__Labels {
+    background-color: var(--orange);
     color: #FFF;
 }
 
-.ComponentDocs__Table__Labels th {
+.ReactExhibit__Docs .Docs__Table__Labels th {
     padding-left: 15px;
     font-size: 15px;
+    border: 1px solid var(--orange);
 }
 
-.ComponentDocs__Table tr {
+.ReactExhibit__Docs .Docs__Table tr {
     height: 40px;
 }
 
-.ComponentDocs__Table tr,
-.ComponentDocs__Table td {
+.ReactExhibit__Docs .Docs__Table tr:nth-child(even) {
+    background-color: #FFF
+}
+
+.ReactExhibit__Docs .Docs__Table tr,
+.ReactExhibit__Docs .Docs__Table td {
     border-top: 1px solid rgba(170, 170, 170, 0.4);
     padding-left: 15px;
     font-size: 15px;

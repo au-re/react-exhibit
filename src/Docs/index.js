@@ -1,5 +1,6 @@
 import "./Docs.css";
 
+import { ContentTile } from "../lib";
 import React from "react";
 
 /**
@@ -22,22 +23,19 @@ const ParamTable = ({ params }) => {
     </tr>));
 
   return (
-    <div>
-      <h3 className="ComponentDocs__Label">Props</h3>
-      <div className="ComponentDocs__TableWrapper">
-        <table className="ComponentDocs__Table">
-          <tbody>
-            <tr className="ComponentDocs__Table__Labels">
-              <th>Name</th>
-              <th>Type</th>
-              <th>Optional</th>
-              <th>Default</th>
-              <th>Description</th>
-            </tr>
-            {paramRows}
-          </tbody>
-        </table>
-      </div>
+    <div className="Docs__TableWrapper">
+      <table className="Docs__Table">
+        <tbody>
+          <tr className="Docs__Table__Labels">
+            <th>Name</th>
+            <th>Type</th>
+            <th>Optional</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+          {paramRows}
+        </tbody>
+      </table>
     </div>);
 };
 
@@ -52,14 +50,13 @@ const ParamTable = ({ params }) => {
  * @returns {object} - Component Docs
  */
 const Docs = ({ label, description, params }) => (
-  <div className="ComponentDocs">
-    <div className="ComponentDocs__Header">
-      <h1 className="ComponentDocs__Label">{label}</h1>
-    </div>
-    <div className="ComponentDocs__Props">
-      <p className="ComponentDocs__Description">{description}</p>
+  <div className="ReactExhibit__Docs">
+    <ContentTile label={label}>
+      <p>{description}</p>
+    </ContentTile>
+    <ContentTile label="Properties">
       <ParamTable params={params} />
-    </div>
+    </ContentTile>
   </div>);
 
 export default Docs;

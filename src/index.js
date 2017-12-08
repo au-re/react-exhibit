@@ -4,11 +4,12 @@ import { Exhibit } from "./lib";
 import Markdown from "markdown-to-jsx";
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import readme from "../README.md";
 import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter as Router } from "react-router-dom";
 
 /* FETCH THE DEMO DATA */
+// TODO the function "requireAllDemos" should be part of react-exhibit!!
 
 // .../MySubComponent/${stop}/... -> 'MySubComponent'
 function extractComponentName(path, stop) {
@@ -16,7 +17,11 @@ function extractComponentName(path, stop) {
   return pathSplit[pathSplit.indexOf(stop) - 1];
 }
 
-// only render documentation that was made by the developer
+function extractDemoName(path) {
+  return path.split("/").slice(-1)[0].slice(0, -3);
+}
+
+// only render documentation with the tag "export"
 function filterDocs(docs) {
   return docs.filter((doc) => doc.comment && doc.tags && doc.tags[0].title === "export");
 }
@@ -42,13 +47,34 @@ function requireAllDemos() {
   const demos = require.context("./", true, /demo\/.*\.js$/);
   const docs = require.context("!!raw-loader!jsdoc2js-loader!./", true, /.*[^.]\/index.js/);
 
+  console.log(demos.keys());
+  console.log(demoSources.keys());
+  console.log(docs.keys());
+
   demos.keys().forEach((key) => {
-    const name = extractComponentName(key, "demo");
-    if (!components[name]) {
-      components[name] = { source: [], demo: [] };
+    const componentName = extractComponentName(key, "demo");
+    const demoName = extractDemoName(key);
+
+    if (_.isEmpty(components[componentName])) {
+      console.log(components[componentName]);
+      components[componentName] = {
+        demo: {},
+        docs: {}
+      }
     }
-    components[name].source.push(demoSources(key));
-    components[name].demo.push(demos(key));
+
+    components[componentName].demo = Object.assign({}, components[componentName].demo, {
+      [demoName]: {
+        source: demoSources(key),
+        component: demos(key)
+      }
+    })
+    console.log({
+      [demoName]: {
+        source: demoSources(key),
+        component: demos(key)
+      }
+    });
   });
 
   docs.keys().forEach((key) => {

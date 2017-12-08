@@ -1,5 +1,3 @@
-import "./DemoPage.css";
-
 import { ContentTile, Docs, Showcase } from "../../lib";
 import React, { Component } from "react";
 
@@ -39,7 +37,7 @@ export class DemoPage extends Component {
    * @memberof DemoPage
    */
   render() {
-    const { name, docs, sources, demos, libraryName } = this.props;
+    const { name, docs, demo = {}, libraryName } = this.props;
 
     const componentDocs = docs.map((doc, idx) => (
       <Docs
@@ -48,7 +46,7 @@ export class DemoPage extends Component {
         description={doc.description}
         params={doc.params} />));
 
-    const showcases = sources.map((source, idx) => {
+    const showcases = []; /* sources.map((source, idx) => {
       let demo = (<div></div>);
       if (typeof demos[idx].default === "function") demo = demos[idx].default();
       return (
@@ -56,7 +54,8 @@ export class DemoPage extends Component {
           key={idx}
           demo={demo}
           source={parseDependency(source, libraryName)} />);
-    });
+    }); */
+    console.log(demo);
 
     return (
       <div className="ReactExhibit__DemoPage">
