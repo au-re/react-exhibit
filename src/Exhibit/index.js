@@ -10,6 +10,8 @@ import Sidebar from "react-sidebar";
 
 const mql = window.matchMedia(`(min-width: 992px)`);
 
+const componentNameFromUrl = (url) => url.split("/")[1];
+
 /**
  * Application to demo react components
  *
@@ -79,7 +81,7 @@ class ReactExhibit extends Component {
    */
   toggleSideBar() {
     this.setState({
-      sidebarOpen: !this.state.sidebarOpen
+      sidebarOpen: this.state.sidebarDocked || !this.state.sidebarOpen
     });
   }
 
@@ -104,6 +106,7 @@ class ReactExhibit extends Component {
    */
   render() {
     const { components, label, baseURL = "", readme, location } = this.props;
+    const { sidebarDocked, sidebarOpen } = this.state;
 
     const componentListItems = [];
     const routes = [];
@@ -111,7 +114,10 @@ class ReactExhibit extends Component {
     for (const component in components) {
 
       componentListItems.push(
-        <ApplicationListDropdown label={component} key={component} open>
+        <ApplicationListDropdown
+          label={component}
+          key={component}
+          open={component === componentNameFromUrl(location.pathname)}>
           <ApplicationListItem
             onClick={this.toggleSideBar}
             link={`${baseURL}/${component}`}
@@ -132,8 +138,6 @@ class ReactExhibit extends Component {
               demos={components[component].demo} />} />);
     }
 
-    const { sidebarDocked, sidebarOpen } = this.state;
-
     return (
       <div className="ReactExhibit">
         <GithubCorner style={{ position: "fixed", zIndex: 13 }} size="80" bannerColor="#F9AE15" />
@@ -141,7 +145,7 @@ class ReactExhibit extends Component {
           <SystemTitle title={label} href={`/${baseURL}`} />
         </SystemHeader>
         <ApplicationHeader light collapsed={sidebarDocked} onClick={this.toggleSideBarDock}>
-          <ApplicationTitle title={location.pathname} />
+          <ApplicationTitle title={componentNameFromUrl(location.pathname) || label} />
         </ApplicationHeader>
         <Sidebar
           docked={sidebarDocked}

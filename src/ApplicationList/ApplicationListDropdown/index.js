@@ -43,8 +43,8 @@ export class ApplicationListDropdown extends Component {
     const { open } = this.state;
 
     return (
-      <div className="ReactExhibit__ApplicationListDropdown" onClick={this.toggleDropdown}>
-        <div className="ApplicationListDropdown__Label">
+      <div className="ReactExhibit__ApplicationListDropdown">
+        <div className="ApplicationListDropdown__Label" onClick={this.toggleDropdown}>
           <span>{label}</span>
           <span className="ApplicationListDropdown__Icon">{open ? "▲" : "▼"}</span>
         </div>

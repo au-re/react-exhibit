@@ -13,12 +13,15 @@ import React from "react";
  * @param {string} [link] - link to the component page
  * @returns {object} - ApplicationListItem
  */
-export const ApplicationListItem = ({ label, link, onClick }) => (
-  <Route path={link} exact={true} children={({ match }) => (
+export const ApplicationListItem = ({ label, link, onClick }) => link
+  ? (<Route path={link} exact={true} children={({ match }) => (
     <Link onClick={onClick} className={
       match
         ? "ReactExhibit__ApplicationListItem ApplicationListItem--Selected"
-        : "ReactExhibit__ApplicationListItem"} to={link || ""}>
+        : "ReactExhibit__ApplicationListItem"} to={link}>
       <span className="ApplicationListItem__Label">{label}</span>
     </Link>
-  )} />);
+  )} />)
+  : (<div className="ReactExhibit__ApplicationListItem">
+    <span className="ApplicationListItem__Label">{label}</span>
+  </div>);
