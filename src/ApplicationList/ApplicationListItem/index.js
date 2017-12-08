@@ -13,9 +13,9 @@ import React from "react";
  * @param {string} [link] - link to the component page
  * @returns {object} - ApplicationListItem
  */
-export const ApplicationListItem = ({ label, link }) => (
+export const ApplicationListItem = ({ label, link, onClick }) => (
   <Route path={link} exact={true} children={({ match }) => (
-    <Link className={
+    <Link onClick={onClick} className={
       match
         ? "ReactExhibit__ApplicationListItem ApplicationListItem--Selected"
         : "ReactExhibit__ApplicationListItem"} to={link || ""}>

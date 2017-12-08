@@ -1,0 +1,60 @@
+.ReactExhibit__LandingPage {
+  max-width: 920px;
+  margin: auto;
+}
+
+.ReactExhibit__LandingPage h1 {
+  color: var(--dark-grey);
+  text-align: left;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 88px;
+}
+
+.ReactExhibit__LandingPage p,
+.ReactExhibit__LandingPage a {
+  font-family: 'Arimo', sans-serif;
+  font-size: 15px;
+  text-align: left;
+}
+
+.ReactExhibit__LandingPage a {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--blue);
+}
+
+.ReactExhibit__LandingPage a:hover {
+  color: var(--link);
+}
+
+.ReactExhibit__LandingPage strong {
+  font-weight: 600;
+  color: var(--accent-warm);
+}
+
+.ReactExhibit__LandingPage h2 {
+  color: var(--dark-grey);
+  text-align: left;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 60px;
+  margin: auto;
+}
+
+.ReactExhibit__LandingPage h3 {
+  color: var(--dark-grey);
+  text-align: left;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  margin: auto;
+}
+
+.ReactExhibit__LandingPage pre,
+.ReactExhibit__LandingPage img {
+  max-width: 100%;
+}

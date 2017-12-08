@@ -1,73 +1,17 @@
 import "./Exhibit.css";
 
-import { SystemTitle, Docs, GithubCorner, SystemHeader, ApplicationListItem, Showcase, ApplicationHeader, ApplicationTitle } from "../lib";
+import { ApplicationHeader, ApplicationListDropdown, ApplicationListItem, ApplicationTitle, GithubCorner, SystemHeader, SystemTitle } from "../lib";
 import React, { Component } from "react";
-import { Route, Switch, withRouter, Redirect } from "react-router-dom";
+import { Redirect, Route, Switch, withRouter } from "react-router-dom";
 
-import Helmet from "react-helmet";
+import { DemoPage } from "./DemoPage";
+import { LandingPage } from "./LandingPage";
 import Sidebar from "react-sidebar";
 
-/**
- * The source code contains relative paths, replace them with an absolute path
- * to the library name.
- * @example
- * parseDependency('import X from "../../lib.js"');
- * > 'import X from "libraryName"'
- *
- * @param {string} source - the source code
- * @param {string} libraryName - the name of the library
- * @returns {string} source where the dependency is replaced the libraryName
- */
-function parseDependency(source, libraryName) {
-  return source.replace(/(\.\.\/)+lib(.js)?/g, libraryName);
-}
+const mql = window.matchMedia(`(min-width: 992px)`);
 
 /**
- * Page containing the documentation and showcases
- *
- * @param {string} name - Name of the component to be demoed
- * @param {string} docs - jsdoc description of the component
- * @param {string} sources - demo source code to be displayed
- * @param {string} demos - component demos to be run
- * @param {string} libraryName - name of the library, used to replace relative paths
- * @returns {object} - The showcases and docs for a component
- */
-function DemoPage({ name, docs, sources, demos, libraryName }) {
-
-  const componentDocs = docs.map((doc, idx) => (
-    <Docs
-      key={idx}
-      label={doc.name}
-      description={doc.description}
-      params={doc.params} />));
-
-  const showcases = sources.map((source, idx) => {
-    let demo = (<div></div>);
-    if (typeof demos[idx].default === "function") demo = demos[idx].default();
-    return (
-      <Showcase
-        key={idx}
-        demo={demo}
-        source={parseDependency(source, libraryName)} />);
-  });
-
-  return (
-    <div className="Exhibit__DemoPage">
-      <h1 className="Exhibit__DemoPage__Label">{name}</h1>
-      <div className="Exhibit__DemoPage__Docs">
-        {componentDocs}
-      </div>
-      <div className="Exhibit__DemoPage__Showcases">
-        {showcases}
-      </div>
-    </div>);
-}
-
-
-const mql = window.matchMedia(`(min-width: 800px)`);
-
-/**
- *
+ * Application to demo react components
  *
  * @class ReactExhibit
  * @extends {Component}
@@ -84,46 +28,72 @@ class ReactExhibit extends Component {
 
     this.state = {
       mql,
-      sidebarDocked: true,
-      sidebarOpen: true
+      sidebarDocked: false,
+      sidebarOpen: false
     };
 
     this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
     this.toggleSideBar = this.toggleSideBar.bind(this);
+    this.toggleSideBarDock = this.toggleSideBarDock.bind(this);
   }
+
   /**
-   *
+   * When the component mounts, listen for media query changes
    *
    * @memberof ReactExhibit
    */
   componentWillMount() {
     mql.addListener(this.mediaQueryChanged);
-    this.setState({ mql, sidebarDocked: mql.matches });
+    this.setState({
+      sidebarDocked: mql.matches,
+      sidebarOpen: mql.matches
+    });
   }
+
   /**
-   *
+   * When the component unmounts, remove the media query listener
    *
    * @memberof ReactExhibit
    */
   componentWillUnmount() {
     this.state.mql.removeListener(this.mediaQueryChanged);
   }
+
   /**
-   *
+   * Open the sidebar and dock it, if the query matches
    *
    * @memberof ReactExhibit
    */
   mediaQueryChanged() {
-    this.setState({ sidebarDocked: this.state.mql.matches });
+    this.setState({
+      sidebarOpen: this.state.mql.matches,
+      sidebarDocked: this.state.mql.matches
+    });
   }
 
   /**
+   * Toggle the sidebar open on and off
    *
    * @param {any} open
    * @memberof ReactExhibit
    */
-  toggleSideBar(open) {
-    this.setState({ sidebarOpen: !this.state.sidebarOpen, sidebarDocked: !this.state.sidebarDocked });
+  toggleSideBar() {
+    this.setState({
+      sidebarOpen: !this.state.sidebarOpen
+    });
+  }
+
+  /**
+   * Toggle the sidebar dock on and off
+   *
+   * @param {any} open
+   * @memberof ReactExhibit
+   */
+  toggleSideBarDock() {
+    this.setState({
+      sidebarOpen: !this.state.sidebarOpen,
+      sidebarDocked: this.state.mql.matches && !this.state.sidebarDocked
+    });
   }
 
   /**
@@ -140,38 +110,37 @@ class ReactExhibit extends Component {
 
     for (const component in components) {
 
-      const demoPage = (
-        <div>
-          <Helmet><title>{`${label} - ${component}`}</title></Helmet>
-          <DemoPage
-            libraryName={label}
-            docs={components[component].docs}
-            sources={components[component].source}
-            demos={components[component].demo} />
-        </div>);
-
       componentListItems.push(
-        <ApplicationListItem
-          link={`${baseURL}/${component}`}
-          label={component}
-          key={component} />);
+        <ApplicationListDropdown label={component} key={component} open>
+          <ApplicationListItem
+            onClick={this.toggleSideBar}
+            link={`${baseURL}/${component}`}
+            label={component}
+            key={component} />
+        </ApplicationListDropdown>);
 
       routes.push(
         <Route exact
           path={`${baseURL}/${component}`}
           key={component}
-          component={() => demoPage} />);
+          component={() =>
+            <DemoPage
+              name={component}
+              libraryName={label}
+              docs={components[component].docs}
+              sources={components[component].source}
+              demos={components[component].demo} />} />);
     }
 
-    const { sidebarDocked } = this.state;
+    const { sidebarDocked, sidebarOpen } = this.state;
 
     return (
       <div className="ReactExhibit">
-        <GithubCorner style={{ position: "fixed", zIndex: 10 }} size="80" bannerColor="#F9AE15" />
+        <GithubCorner style={{ position: "fixed", zIndex: 13 }} size="80" bannerColor="#F9AE15" />
         <SystemHeader>
           <SystemTitle title={label} href={`/${baseURL}`} />
         </SystemHeader>
-        <ApplicationHeader light collapsed={sidebarDocked} onClick={this.toggleSideBar}>
+        <ApplicationHeader light collapsed={sidebarDocked} onClick={this.toggleSideBarDock}>
           <ApplicationTitle title={location.pathname} />
         </ApplicationHeader>
         <Sidebar
@@ -180,23 +149,18 @@ class ReactExhibit extends Component {
           sidebarClassName="ReactExhibit__Sidebar"
           contentClassName="ReactExhibit__Sidebar__Content"
           sidebar={componentListItems}
-          open={sidebarDocked}
+          open={sidebarOpen}
           onSetOpen={this.toggleSideBar}>
           <div className="ReactExhibit__Content">
             <Switch>
-              {routes}
               <Route exact path={`${baseURL}/`}
-                component={() =>
-                  (<div className="Exhibit__LandingPage">
-                    <Helmet><title>{label}</title></Helmet>
-                    <div>{readme}</div>
-                  </div>)} />
+                component={() => <LandingPage readme={readme} pageTitle={label} />} />
+              {routes}
               <Route component={() => <Redirect to="/" push />} />
             </Switch>
           </div>
         </Sidebar>
-      </div>
-    );
+      </div>);
   }
 }
 

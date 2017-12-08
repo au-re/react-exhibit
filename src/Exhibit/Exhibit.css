@@ -3,172 +3,26 @@
     min-width: 320px;
     background-color: var(--application-bright);
     padding-right: 16px;
+    z-index: 11 !important;
 }
 
 .ReactExhibit__Sidebar__Content {
     overflow-y: auto !important;
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
 }
 
 .ReactExhibit__Content {
     margin-top: 80px;
-}
-
-
-
-
-
-
-
-
-.Exhibit__ComponentList {
-    padding: 1rem;
-    border-bottom: 1px solid var(--bright-grey);
-}
-
-.Exhibit__DemoPage {
-    padding: 1rem;
-}
-
-.Exhibit__DemoPage,
-.Exhibit__LandingPage {
-    max-width: 920px;
-    margin: auto;
-}
-
-.Exhibit__DemoPage__Label {
-    margin-top: 0;
-}
-
-.Exhibit__DemoPage__Label,
-.Exhibit__LandingPage h1 {
-    color: var(--dark-grey);
-    text-align: left;
-    font-family: 'Arimo', sans-serif;
-    font-weight: 600;
-    font-size: 48px;
-    line-height: 88px;
-}
-
-.Exhibit__DemoPage__Docs,
-.Exhibit__DemoPage__Showcases {
+    background-color: var(--application-bright);
     width: 100%;
-    margin-bottom: 4px;
+    display: flex;
+    flex-direction: column;
 }
 
-.Exhibit__DemoPage__Showcases .Showcase {
-    margin-bottom: 4px;
-}
-
-.Exhibit__LandingPage {
-    padding: 4px;
-}
-
-.Exhibit__LandingPage p,
-.Exhibit__LandingPage a {
-    font-family: 'Arimo', sans-serif;
-    font-size: 15px;
-    text-align: left;
-}
-
-.Exhibit__LandingPage a {
-    font-weight: 600;
-    text-decoration: none;
-    color: var(--bright-cold);
-}
-
-.Exhibit__LandingPage a:hover {
-    color: var(--accent-warm);
-}
-
-.Exhibit__LandingPage strong {
-    font-weight: 600;
-    color: var(--accent-warm);
-}
-
-.Exhibit__LandingPage h2 {
-    color: var(--dark-grey);
-    text-align: left;
-    font-family: 'Arimo', sans-serif;
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 60px;
-    margin: auto;
-}
-
-.Exhibit__LandingPage h3 {
-    color: var(--dark-grey);
-    text-align: left;
-    font-family: 'Arimo', sans-serif;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 30px;
-    margin: auto;
-}
-
-.Exhibit__LandingPage img {
-    max-width: 100%;
-}
-
-
-/* Small Devices, Tablets */
-
-@media only screen and (min-width: 992px) {
-    .Exhibit__Content {
-        width: 966px;
-        margin: auto;
-        grid-column: 2;
-        display: grid;
-        grid-gap: 25px;
-        grid-template-columns: 716px 250px;
-    }
-    .Exhibit__DemoPage {
-        overflow: hidden;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 25px;
-    }
-    .Exhibit__DemoPage__Showcases {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 25px;
-    }
-    .Exhibit__DemoPage__Docs,
-    .Exhibit__DemoPage__Showcases {
-        margin: auto;
-    }
-    .Exhibit__ComponentList {
-        grid-area: 1 / 2 / 1 / 3;
-    }
-    .Exhibit__Header {
-        grid-area: 1 / 1 / 2 / 4;
-    }
-}
-
-@media only screen and (min-width: 1225px) {
-    .Exhibit__Content {
-        width: 1170px;
-        margin: auto;
-        grid-template-columns: 920px 250px;
-    }
-    .Exhibit__DemoPage,
-    .Exhibit__LandingPage {
-        width: 920px;
-        margin: auto;
-    }
-}
-
-
-/* Large Devices, Wide Screens */
-
-@media only screen and (min-width: 1800px) {
-    .Exhibit__Content {
-        width: 1450px;
-        margin: auto;
-        grid-template-columns: 1200px 250px;
-    }
-    .Exhibit__DemoPage,
-    .Exhibit__LandingPage {
-        width: 1200px;
-        margin: auto;
-    }
+.ReactExhibit__Content__Container {
+    background-color: var(--tile-bright);
+    padding: 40px 4px 4px 4px;
+    margin: 0 8px 8px 8px;
 }
