@@ -62,9 +62,7 @@ class ReactExhibit extends Component {
       (<ApplicationListDropdown
         label={component}
         key={component}
-        link={`${baseURL}/${component}`}
-        active={component === componentNameFromUrl(location.pathname)}
-        open={component === componentNameFromUrl(location.pathname)}>
+        link={`${baseURL}/${component}`}>
         {
           Object.keys(components[component].demo).map((demoName) =>
             <ApplicationListItem
@@ -189,12 +187,14 @@ class ReactExhibit extends Component {
           open={sidebarOpen}
           onSetOpen={this.toggleSideBar}>
           <div className="ReactExhibit__Content">
-            <Switch>
-              <Route exact path={`${baseURL}/`}
-                component={() => <LandingPage readme={readme} pageTitle={libName} />} />
-              {this.routes}
-              <Route component={() => <Redirect to={`${baseURL}/`} push />} />
-            </Switch>
+            <div className="ReactExhibit__Content__Container">
+              <Switch>
+                <Route exact path={`${baseURL}/`}
+                  component={() => <LandingPage readme={readme} pageTitle={libName} />} />
+                {this.routes}
+                <Route component={() => <Redirect to={`${baseURL}/`} push />} />
+              </Switch>
+            </div>
           </div>
         </Sidebar>
       </div>);

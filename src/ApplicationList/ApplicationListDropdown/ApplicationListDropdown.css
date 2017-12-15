@@ -1,6 +1,6 @@
-.ReactExhibit__ApplicationListDropdown,
-.ReactExhibit__ApplicationListDropdown:active,
-.ReactExhibit__ApplicationListDropdown:focus {
+.ReactExhibit__ApplicationListDropdown a,
+.ReactExhibit__ApplicationListDropdown a:active,
+.ReactExhibit__ApplicationListDropdown a:focus {
     font-family: 'Arimo', sans-serif;
     display: block;
     text-decoration: none;
@@ -19,9 +19,9 @@
 }
 
 .ReactExhibit__ApplicationListDropdown .ApplicationListDropdown__Label--Active {
-    background-color: var(--blue);
+    background-color: #FBFBFB;
     text-decoration: none;
-    color: #FFF;
+    color: #000;
 }
 
 .ReactExhibit__ApplicationListDropdown>.ReactExhibit__ApplicationListItem {
@@ -29,9 +29,9 @@
 }
 
 .ReactExhibit__ApplicationListDropdown .ApplicationListDropdown__Label:hover {
-    background-color: var(--blue);
+    background-color: #FBFBFB;
     text-decoration: none;
-    color: #FFF;
+    color: #000;
 }
 
 .ReactExhibit__ApplicationListDropdown .ApplicationListDropdown__Label {

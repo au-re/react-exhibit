@@ -103,19 +103,6 @@ function requireAllDemos() {
     }
   });
 
-/*   docs.keys().forEach((key) => {
-    const componentName = extractComponentName(key, "index.js");
-    const readMeKey = key.replace("index.js", "README.md");
-    if (_.isEmpty(components[componentName])) {
-      components[componentName] = {
-        demo: {},
-        docs: {}
-      }
-    }
-    console.log(key);
-    components[componentName].docs = filterDocs(docs(key));
-  }); */
-
   return components;
 }
 

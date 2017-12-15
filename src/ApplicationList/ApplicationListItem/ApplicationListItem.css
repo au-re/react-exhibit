@@ -12,9 +12,9 @@
 }
 
 .ReactExhibit__ApplicationListItem:hover {
-    background-color: var(--blue);
+    background-color: #FBFBFB;
     text-decoration: none;
-    color: #FFF;
+    color: #000;
 }
 
 .ReactExhibit__ApplicationListItem.ApplicationListItem--Selected,

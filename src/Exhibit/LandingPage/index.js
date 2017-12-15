@@ -12,20 +12,18 @@ import Helmet from "react-helmet";
  */
 export class LandingPage extends Component {
 
-    /**
-     * Render the landing page
-     *
-     * @returns {object}
-     * @memberof LandingPage
-     */
-    render() {
-      const { readme, pageTitle } = this.props;
-      return (
-        <div className="ReactExhibit__Content__Container">
-          <div className="ReactExhibit__LandingPage">
-            <Helmet><title>{pageTitle}</title></Helmet>
-            <div>{readme}</div>
-          </div>
-        </div>);
-    }
+  /**
+   * Render the landing page
+   *
+   * @returns {object}
+   * @memberof LandingPage
+   */
+  render() {
+    const { readme, pageTitle } = this.props;
+    return (
+      <div className="ReactExhibit__LandingPage">
+        <Helmet><title>{pageTitle}</title></Helmet>
+        <div>{readme}</div>
+      </div>);
+  }
 }
