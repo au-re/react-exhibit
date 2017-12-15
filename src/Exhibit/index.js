@@ -1,6 +1,6 @@
 import "./Exhibit.css";
 
-import { ApplicationHeader, ApplicationListDropdown, ApplicationListItem, ApplicationTitle, ContentTile, GithubCorner, SystemHeader, SystemTitle } from "../lib";
+import { ApplicationHeader, ApplicationListDropdown, ApplicationListItem, ApplicationTitle, GithubCorner, SystemHeader, SystemTitle } from "../lib";
 import { Link, Redirect, Route, Switch, withRouter } from "react-router-dom";
 import React, { Component } from "react";
 
@@ -157,12 +157,7 @@ class ReactExhibit extends Component {
   render() {
     const { libName, baseURL = "", readme, location } = this.props;
     const { sidebarDocked, sidebarOpen } = this.state;
-
     const pathname = _.get(location, "pathname", "");
-
-    /*    console.log(routes); */
-    console.log(pathname);
-    console.log(componentUrl(pathname));
 
     return (
       <div className="ReactExhibit">
@@ -207,7 +202,3 @@ class ReactExhibit extends Component {
 }
 
 export default withRouter(ReactExhibit);
-
-
-{/* title={} subTitle={demoNameFromUrl(location.pathname)} */ }
-/*  */

@@ -1,6 +1,6 @@
-import { ContentTile, Docs } from "../../lib";
 import React, { Component } from "react";
 
+import { Docs } from "../../lib";
 import Helmet from "react-helmet";
 import Markdown from "markdown-to-jsx";
 

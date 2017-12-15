@@ -1,4 +1,4 @@
-import { ContentTile, Docs, Showcase } from "../../lib";
+import { ContentTile, Showcase } from "../../lib";
 import React, { Component } from "react";
 
 import Helmet from "react-helmet";
@@ -41,9 +41,6 @@ export class DemoPage extends Component {
 
     let demo = (<div></div>);
     if (typeof component.default === "function") demo = component.default();
-
-    console.log("SOURCE", source);
-    console.log("DEMO", demo);
 
     return (
       <div className="ReactExhibit__DemoPage">
