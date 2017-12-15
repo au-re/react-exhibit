@@ -2,6 +2,8 @@ import "./ApplicationTitle.css";
 
 import React, { Component } from "react";
 
+import { Link } from "react-router-dom";
+
 /**
  * Application Title Component
  *
@@ -17,11 +19,11 @@ export class ApplicationTitle extends Component {
    * @memberof ApplicationTitle
    */
   render() {
-    const { title } = this.props;
+    const { title, children } = this.props;
 
     return (
       <span className="ReactExhibit__ApplicationTitle">
-        {title}
+        {title || children}
       </span>);
   }
 }

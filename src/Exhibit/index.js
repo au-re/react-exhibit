@@ -1,8 +1,8 @@
 import "./Exhibit.css";
 
 import { ApplicationHeader, ApplicationListDropdown, ApplicationListItem, ApplicationTitle, ContentTile, GithubCorner, SystemHeader, SystemTitle } from "../lib";
+import { Link, Redirect, Route, Switch, withRouter } from "react-router-dom";
 import React, { Component } from "react";
-import { Redirect, Route, Switch, withRouter } from "react-router-dom";
 
 import { DemoPage } from "./DemoPage";
 import { DocPage } from "./DocPage";
@@ -14,6 +14,7 @@ const mql = window.matchMedia(`(min-width: 992px)`);
 
 const componentNameFromUrl = (url) => url.split("/")[1];
 const demoNameFromUrl = (url) => url.split("/")[2];
+const componentUrl = (url) => url.split("/").slice(0, 2).join("/");
 
 /**
  * Application to demo react components
@@ -48,11 +49,57 @@ class ReactExhibit extends Component {
    * @memberof ReactExhibit
    */
   componentWillMount() {
+    const { components, libName, baseURL = "", location } = this.props;
+
     mql.addListener(this.mediaQueryChanged);
     this.setState({
       sidebarDocked: mql.matches,
       sidebarOpen: mql.matches
     });
+
+    // create a dropdown for each component, and an item for each demo
+    this.componentList = Object.keys(components).map((component) =>
+      (<ApplicationListDropdown
+        label={component}
+        key={component}
+        link={`${baseURL}/${component}`}
+        active={component === componentNameFromUrl(location.pathname)}
+        open={component === componentNameFromUrl(location.pathname)}>
+        {
+          Object.keys(components[component].demo).map((demoName) =>
+            <ApplicationListItem
+              onClick={this.toggleSideBar}
+              link={`${baseURL}/${component}/${demoName}`}
+              label={demoName}
+              key={`${component}/${demoName}`} />)
+        }
+      </ApplicationListDropdown>));
+
+    // setup the routes for all components
+    this.routes = Object.keys(components).map((component) =>
+      (<Route path={`${baseURL}/${component}`} component={() => (
+        <div>
+          <DocPage
+            componentName={component}
+            libName={libName}
+            readme={components[component].readme}
+            docs={components[component].docs} />
+          <Switch>
+            <Route exact path={`${baseURL}/${component}`} component={() => <div></div>} />
+            {
+              Object.keys(components[component].demo).map((demoName) =>
+                <Route exact
+                  path={`${baseURL}/${component}/${demoName}`}
+                  key={`route/${component}/${demoName}`}
+                  component={() => <DemoPage
+                    name={component}
+                    source={components[component].demo[demoName].source}
+                    component={components[component].demo[demoName].component}
+                    libName={libName} />} />)
+            }
+            <Route component={() => <Redirect to={`${baseURL}/${component}`} push />} />
+          </Switch>
+        </div>)} />));
   }
 
   /**
@@ -107,76 +154,50 @@ class ReactExhibit extends Component {
    * @returns {object}
    * @memberof ReactExhibit
    */
-  render() { // TODO: rename label to library name
-    const { components, label, baseURL = "", readme, location } = this.props;
+  render() {
+    const { libName, baseURL = "", readme, location } = this.props;
     const { sidebarDocked, sidebarOpen } = this.state;
 
-    // create a dropdown for each component, and an item for each demo
-    const componentListItems = Object.keys(components).map((component) =>
-      (<ApplicationListDropdown
-        label={component}
-        key={component}
-        link={`${baseURL}/${component}`}
-        active={component === componentNameFromUrl(location.pathname)}
-        open={component === componentNameFromUrl(location.pathname)}>
-        <ApplicationListItem
-          onClick={this.toggleSideBar}
-          link={`${baseURL}/${component}`}
-          label="Documentation"
-          key={`${component}/docs`} />
-        {
-          Object.keys(components[component].demo).map((demoName) =>
-            <ApplicationListItem
-              onClick={this.toggleSideBar}
-              link={`${baseURL}/${component}/${demoName}`}
-              label={demoName}
-              key={`${component}/${demoName}`} />)
-        }
-      </ApplicationListDropdown>));
+    const pathname = _.get(location, "pathname", "");
 
-    // setup the routes for all components
-    const routes = Object.keys(components).map((component) =>
-      (<Route path={`${baseURL}/${component}`} component={() => (
-        <Switch>
-          <Route exact path={`${baseURL}/${component}`}
-            component={() => <DocPage
-              componentName={component}
-              libraryName={label}
-              docs={components[component].docs} />} />
-          {
-            Object.keys(components[component].demo).map((demoName) =>
-              <Route exact
-                path={`${baseURL}/${component}/${demoName}`}
-                key={`route/${component}/${demoName}`}
-                component={() => <ContentTile />} />)
-          }
-          <Route component={() => <Redirect to={`${baseURL}/${component}`} push />} />
-        </Switch>)} />));
-
-    console.log(routes);
+    /*    console.log(routes); */
+    console.log(pathname);
+    console.log(componentUrl(pathname));
 
     return (
       <div className="ReactExhibit">
         <GithubCorner style={{ position: "fixed", zIndex: 13 }} size="80" bannerColor="#F9AE15" />
         <SystemHeader>
-          <SystemTitle title={label} href={`/${baseURL}`} />
+          <SystemTitle title={libName} href={`/${baseURL}`} />
         </SystemHeader>
         <ApplicationHeader light collapsed={sidebarDocked} onClick={this.toggleSideBarDock}>
-          <ApplicationTitle title={`${componentNameFromUrl(location.pathname)} > ${demoNameFromUrl(location.pathname)} ` || label} />
+          <ApplicationTitle>
+            {
+              componentNameFromUrl(pathname) &&
+              <Link to={componentUrl(pathname)}>{componentNameFromUrl(pathname)}</Link>
+            }
+            {
+              demoNameFromUrl(pathname) &&
+              <span>
+                <span>/</span>
+                <Link to={pathname}>{demoNameFromUrl(pathname)}</Link>
+              </span>
+            }
+          </ApplicationTitle>
         </ApplicationHeader>
         <Sidebar
           docked={sidebarDocked}
           shadow={false}
           sidebarClassName="ReactExhibit__Sidebar"
           contentClassName="ReactExhibit__Sidebar__Content"
-          sidebar={componentListItems}
+          sidebar={this.componentList}
           open={sidebarOpen}
           onSetOpen={this.toggleSideBar}>
           <div className="ReactExhibit__Content">
             <Switch>
               <Route exact path={`${baseURL}/`}
-                component={() => <LandingPage readme={readme} pageTitle={label} />} />
-              {routes}
+                component={() => <LandingPage readme={readme} pageTitle={libName} />} />
+              {this.routes}
               <Route component={() => <Redirect to={`${baseURL}/`} push />} />
             </Switch>
           </div>
@@ -186,3 +207,7 @@ class ReactExhibit extends Component {
 }
 
 export default withRouter(ReactExhibit);
+
+
+{/* title={} subTitle={demoNameFromUrl(location.pathname)} */ }
+/*  */

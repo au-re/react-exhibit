@@ -2,6 +2,8 @@ import "./ApplicationListDropdown.css";
 
 import React, { Component } from "react";
 
+import { Link } from "react-router-dom";
+
 /**
  * Dropdown in the for the sidebar
  *
@@ -39,17 +41,19 @@ export class ApplicationListDropdown extends Component {
    * @memberof ApplicationListDropdown
    */
   render() {
-    const { children, label, active } = this.props;
+    const { children, label, active, link = "" } = this.props;
     const { open } = this.state;
 
     return (
       <div className="ReactExhibit__ApplicationListDropdown">
-        <div
-          className={`ApplicationListDropdown__Label ${active ? "ApplicationListDropdown__Label--Active" : ""}`}
-          onClick={this.toggleDropdown}>
-          <span>{label}</span>
-          <span className="ApplicationListDropdown__Icon">{open ? "▲" : "▼"}</span>
-        </div>
+        <Link to={link} onClick={(e) => open && e.preventDefault()}>
+          <div
+            className={`ApplicationListDropdown__Label ${active ? "ApplicationListDropdown__Label--Active" : ""}`}
+            onClick={this.toggleDropdown}>
+            <span>{label}</span>
+            <span className="ApplicationListDropdown__Icon">{open ? "▲" : "▼"}</span>
+          </div>
+        </Link>
         {open && children}
       </div>);
   }

@@ -2,6 +2,7 @@ import { ContentTile, Docs } from "../../lib";
 import React, { Component } from "react";
 
 import Helmet from "react-helmet";
+import Markdown from "markdown-to-jsx";
 
 /**
  * Page containing the documentation of a component, specific readme and prop definition
@@ -20,7 +21,7 @@ export class DocPage extends Component {
    * @memberof DocPage
    */
   render() {
-    const { componentName = "", libraryName = "", docs = [] } = this.props;
+    const { componentName = "", libName = "", docs = [], readme } = this.props;
 
     const componentDocs = docs.map((doc, idx) => (
       <Docs
@@ -31,8 +32,8 @@ export class DocPage extends Component {
 
     return (
       <div className="ReactExhibit__DocPage">
-        <Helmet><title>{`${libraryName} - ${componentName}`}</title></Helmet>
-        <ContentTile>place for readme</ContentTile>
+        <Helmet><title>{`${libName} - ${componentName}`}</title></Helmet>
+        {readme && <Markdown>{readme}</Markdown>}
         {componentDocs}
       </div>);
   }

@@ -1,6 +1,7 @@
 import "./Docs.css";
 
-import { ContentTile } from "../lib";
+import { ContentTile, ContentTileHeader } from "../lib";
+
 import React from "react";
 
 /**
@@ -50,13 +51,15 @@ const ParamTable = ({ params }) => {
  * @returns {object} - Component Docs
  */
 const Docs = ({ label, description, params }) => (
-  <div className="ReactExhibit__Docs">
-    <ContentTile label={label}>
-      <p>{description}</p>
-    </ContentTile>
-    <ContentTile label="Properties">
-      <ParamTable params={params} />
-    </ContentTile>
-  </div>);
+  <ContentTile label={label}>
+    {description && <p>{description}</p>}
+    {
+      params &&
+      <div className="ReactExhibit__Docs">
+        <ContentTileHeader label="Properties" />
+        <ParamTable params={params} />
+      </div>
+    }
+  </ContentTile>);
 
 export default Docs;

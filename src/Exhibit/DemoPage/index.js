@@ -37,38 +37,21 @@ export class DemoPage extends Component {
    * @memberof DemoPage
    */
   render() {
-    const { name, docs, demo = {}, libraryName } = this.props;
+    const { name, source, component, libName } = this.props;
 
-    const componentDocs = docs.map((doc, idx) => (
-      <Docs
-        key={idx}
-        label={doc.name}
-        description={doc.description}
-        params={doc.params} />));
+    let demo = (<div></div>);
+    if (typeof component.default === "function") demo = component.default();
 
-    const showcases = []; /* sources.map((source, idx) => {
-      let demo = (<div></div>);
-      if (typeof demos[idx].default === "function") demo = demos[idx].default();
-      return (
-        <Showcase
-          key={idx}
-          demo={demo}
-          source={parseDependency(source, libraryName)} />);
-    }); */
-    console.log(demo);
+    console.log("SOURCE", source);
+    console.log("DEMO", demo);
 
     return (
       <div className="ReactExhibit__DemoPage">
-        <Helmet><title>{`${libraryName} - ${name}`}</title></Helmet>
+        <Helmet><title>{`${libName} - ${name}`}</title></Helmet>
         <ContentTile>
-          <div className="">
-            {componentDocs}
-          </div>
-        </ContentTile>
-        <ContentTile>
-          <div className="">
-            {showcases}
-          </div>
+          <Showcase
+            demo={demo}
+            source={parseDependency(source, libName)} />
         </ContentTile>
       </div>);
   }

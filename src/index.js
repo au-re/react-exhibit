@@ -13,17 +13,33 @@ import registerServiceWorker from './registerServiceWorker';
 
 // .../MySubComponent/${stop}/... -> 'MySubComponent'
 function extractComponentName(path, stop) {
-  const pathSplit = path.split("/");
-  return pathSplit[pathSplit.indexOf(stop) - 1];
+  const arr = path.split("/");
+  return arr[arr.indexOf(stop) - 1];
 }
 
+// .../MySubComponent/${stop}/... -> .../MySubComponent
+function extractComponentPath(path, stop) {
+  const arr = path.split("/");
+  return arr.splice(0, arr.indexOf(stop)).join("/");
+}
+
+// .../MySubComponent/demo/usage.js -> usage
 function extractDemoName(path) {
   return path.split("/").slice(-1)[0].slice(0, -3);
 }
 
+// get the file at the root of the folder
+function getComponentIndex(path) {
+  return extractComponentPath(path, "demo") + "/index.js";
+}
+
+function getComponentReadme(path) {
+  return extractComponentPath(path, "demo") + "/README.md";
+}
+
 // only render documentation with the tag "export"
 function filterDocs(docs) {
-  return docs.filter((doc) => doc.comment && doc.tags && doc.tags[0].title === "export");
+  return docs.filter((doc) => doc.comment && doc.tags);
 }
 
 /**
@@ -43,46 +59,62 @@ function filterDocs(docs) {
  */
 function requireAllDemos() {
   const components = {};
+
   const demoSources = require.context("!!raw-loader!./", true, /demo\/.*\.js$/);
   const demos = require.context("./", true, /demo\/.*\.js$/);
+
+  const readMes = require.context("./", true, /.*[^.]\/README.md$/);
   const docs = require.context("!!raw-loader!jsdoc2js-loader!./", true, /.*[^.]\/index.js/);
 
-  console.log(demos.keys());
-  console.log(demoSources.keys());
-  console.log(docs.keys());
+  console.log("DEMOS:", demos.keys());
+  console.log("DOCS:", docs.keys());
+  console.log("READMES:", readMes.keys());
 
   demos.keys().forEach((key) => {
+    const componentPath = extractComponentPath(key, "demo");
     const componentName = extractComponentName(key, "demo");
     const demoName = extractDemoName(key);
 
+    console.log(componentPath);
+
+    // initiate component if no demo was found for it
     if (_.isEmpty(components[componentName])) {
-      console.log(components[componentName]);
       components[componentName] = {
         demo: {},
-        docs: {}
+        docs: {},
+        readme: ""
       }
     }
 
+    // load a demo
     components[componentName].demo = Object.assign({}, components[componentName].demo, {
       [demoName]: {
         source: demoSources(key),
         component: demos(key)
       }
     })
-    console.log({
-      [demoName]: {
-        source: demoSources(key),
-        component: demos(key)
-      }
-    });
-  });
 
-  docs.keys().forEach((key) => {
-    const name = extractComponentName(key, "index.js");
-    if (components[name]) {
-      components[name].docs = filterDocs(docs(key));
+    if (docs.keys().includes(getComponentIndex(key))) {
+      components[componentName].docs = filterDocs(docs(getComponentIndex(key)));
+    }
+
+    if (readMes.keys().includes(getComponentReadme(key))) {
+      components[componentName].readme = readMes(getComponentReadme(key))
     }
   });
+
+/*   docs.keys().forEach((key) => {
+    const componentName = extractComponentName(key, "index.js");
+    const readMeKey = key.replace("index.js", "README.md");
+    if (_.isEmpty(components[componentName])) {
+      components[componentName] = {
+        demo: {},
+        docs: {}
+      }
+    }
+    console.log(key);
+    components[componentName].docs = filterDocs(docs(key));
+  }); */
 
   return components;
 }
@@ -94,9 +126,10 @@ ReactDOM.render(
     <Exhibit
       readme={<Markdown>{readme}</Markdown>}
       baseURL={process.env.PUBLIC_URL}
-      label="react-exhibit"
+      libName="react-exhibit"
       components={requireAllDemos()} />
   </Router>,
   document.getElementById("root"));
 
 registerServiceWorker();
+
