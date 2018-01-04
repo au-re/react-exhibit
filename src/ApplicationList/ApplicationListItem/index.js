@@ -14,7 +14,7 @@ import React from "react";
  * @returns {object} - ApplicationListItem
  */
 export const ApplicationListItem = ({ label, link, onClick }) => link
-  ? (<Route path={link} exact={true} children={({ match }) => (
+  ? (<Route path={link} exact children={({ match }) => (
     <Link onClick={onClick} className={
       match
         ? "ReactExhibit__ApplicationListItem ApplicationListItem--Selected"

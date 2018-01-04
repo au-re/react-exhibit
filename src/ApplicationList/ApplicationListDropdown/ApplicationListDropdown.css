@@ -1,3 +1,26 @@
+.ReactExhibit__ApplicationListDropdown {
+    margin: 5px 0 5px 0;
+}
+
+.ReactExhibit__ApplicationListDropdown.ApplicationListDropdown--Active {
+    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.05), -1px -1px 5px 0 rgba(0, 0, 0, 0.05);
+}
+
+.ReactExhibit__ApplicationListDropdown.ApplicationListDropdown--Active a:first-of-type {
+    background-color: #FFF;
+    color: var(--blue);
+    /* border-top: 2px solid var(--blue); */
+}
+
+.ReactExhibit__ApplicationListDropdown.ApplicationListDropdown--Open.ApplicationListDropdown--Active a:first-of-type,
+.ReactExhibit__ApplicationListDropdown.ApplicationListDropdown--Open.ApplicationListDropdown--Active a:first-of-type:focus,
+.ReactExhibit__ApplicationListDropdown.ApplicationListDropdown--Open.ApplicationListDropdown--Active a:first-of-type:active,
+.ReactExhibit__ApplicationListDropdown.ApplicationListDropdown--Open.ApplicationListDropdown--Active a:first-of-type:hover {
+    background-color: #FFF;
+    color: var(--blue);
+    /* border-top: 2px solid var(--blue); */
+}
+
 .ReactExhibit__ApplicationListDropdown a,
 .ReactExhibit__ApplicationListDropdown a:active,
 .ReactExhibit__ApplicationListDropdown a:focus {
@@ -10,6 +33,13 @@
     line-height: 40px;
     color: var(--text-bright);
     cursor: pointer;
+    /* border-bottom: 1px solid #000; */
+}
+
+.ReactExhibit__ApplicationListDropdown a:hover {
+    background-color: #FFF;
+    text-decoration: none;
+    color: #000;
 }
 
 .ReactExhibit__ApplicationListDropdown .ApplicationListDropdown__Label {
@@ -18,20 +48,16 @@
     padding-right: 16px;
 }
 
-.ReactExhibit__ApplicationListDropdown .ApplicationListDropdown__Label--Active {
-    background-color: #FBFBFB;
+.ReactExhibit__ApplicationListDropdown.ApplicationListDropdown--Open a:first-of-type,
+.ReactExhibit__ApplicationListDropdown.ApplicationListDropdown--Open a:first-of-type:hover,
+.ReactExhibit__ApplicationListDropdown.ApplicationListDropdown--Open a:first-of-type:active,
+.ReactExhibit__ApplicationListDropdown.ApplicationListDropdown--Open a:first-of-type:focus {
     text-decoration: none;
     color: #000;
 }
 
-.ReactExhibit__ApplicationListDropdown>.ReactExhibit__ApplicationListItem {
+.ReactExhibit__ApplicationListDropdown.ApplicationListDropdown--Open.ApplicationListDropdown--Active>.ReactExhibit__ApplicationListItem {
     background-color: var(--tile-bright);
-}
-
-.ReactExhibit__ApplicationListDropdown .ApplicationListDropdown__Label:hover {
-    background-color: #FBFBFB;
-    text-decoration: none;
-    color: #000;
 }
 
 .ReactExhibit__ApplicationListDropdown .ApplicationListDropdown__Label {

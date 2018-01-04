@@ -26,11 +26,13 @@ class ApplicationListDropdown extends Component {
 
   /**
    * toggle the dropdown open/close
+   * only close the dropdown if the current page matches the dropdown link
    *
+   * @param {boolean} match - true if the link of the dropdown matches the current page
    * @memberof ApplicationListDropdown
    */
-  toggleDropdown() {
-    this.setState({ open: !this.state.open });
+  toggleDropdown(match) {
+    this.setState({ open: !(match && this.state.open) });
   }
 
   /**
@@ -44,14 +46,20 @@ class ApplicationListDropdown extends Component {
     const { open } = this.state;
 
     return (
-      <Route path={link} exact={true} children={({ match }) => (
-        <div className="ReactExhibit__ApplicationListDropdown">
-          <Link to={link} onClick={(e) => open && e.preventDefault()}>
+      <Route path={link} children={({ match }) => (
+        <div className={`ReactExhibit__ApplicationListDropdown
+          ${open ? "ApplicationListDropdown--Open" : ""}
+          ${match ? "ApplicationListDropdown--Active" : ""}`}>
+          <Link to={link} onClick={(e) => open && match && e.preventDefault()}>
             <div
-              className={`ApplicationListDropdown__Label ${open ? "ApplicationListDropdown__Label--Active" : ""}`}
-              onClick={this.toggleDropdown}>
+              className="ApplicationListDropdown__Label"
+              onClick={(e) => this.toggleDropdown(match)}>
               <span>{label}</span>
-              <span className="ApplicationListDropdown__Icon">{open ? "▲" : "▼"}</span>
+              <span className="ApplicationListDropdown__Icon">
+                {open
+                  ? <i className="fa fa-chevron-up" aria-hidden="true"></i>
+                  : <i className="fa fa-chevron-down" aria-hidden="true"></i>}
+              </span>
             </div>
           </Link>
           {open && children}

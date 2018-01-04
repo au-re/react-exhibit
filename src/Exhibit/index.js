@@ -1,14 +1,14 @@
 import "./Exhibit.css";
 
-import { ApplicationHeader, ApplicationListDropdown, ApplicationListItem, ApplicationTitle, GithubCorner, SystemHeader, SystemTitle } from "../lib";
-import { Link, Redirect, Route, Switch, withRouter } from "react-router-dom";
+import _ from "lodash";
 import React, { Component } from "react";
+import { Link, Redirect, Route, Switch, withRouter } from "react-router-dom";
+import Sidebar from "react-sidebar";
 
+import { ApplicationHeader, ApplicationListDropdown, ApplicationListItem, ApplicationTitle, GithubCorner, SystemHeader, SystemTitle } from "../lib";
 import { DemoPage } from "./DemoPage";
 import { DocPage } from "./DocPage";
 import { LandingPage } from "./LandingPage";
-import Sidebar from "react-sidebar";
-import _ from "lodash";
 
 const mql = window.matchMedia(`(min-width: 992px)`);
 
@@ -49,7 +49,7 @@ class ReactExhibit extends Component {
    * @memberof ReactExhibit
    */
   componentWillMount() {
-    const { components, libName, baseURL = "", location } = this.props;
+    const { components, libName, baseURL = "" } = this.props;
 
     mql.addListener(this.mediaQueryChanged);
     this.setState({
@@ -159,7 +159,6 @@ class ReactExhibit extends Component {
 
     return (
       <div className="ReactExhibit">
-        <GithubCorner style={{ position: "fixed", zIndex: 13 }} size="80" bannerColor="#F9AE15" />
         <SystemHeader>
           <SystemTitle title={libName} href={`/${baseURL}`} />
         </SystemHeader>

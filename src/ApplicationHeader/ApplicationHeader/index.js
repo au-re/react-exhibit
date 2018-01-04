@@ -26,7 +26,9 @@ export class ApplicationHeader extends Component {
     return (
       <div className={`ReactExhibit__ApplicationHeader ${headerClass}`}>
         <div className="ApplicationHeader__MenuIcon" onClick={onClick}>
-          {collapsed ? "x" : "="}
+          {collapsed
+            ? <i className="fa fa-times" aria-hidden="true" />
+            : <i className="fa fa-bars" aria-hidden="true" />}
         </div>
         <span className={`ApplicationHeader__Content ${collapsed ? "ApplicationHeader__Content--Collapsed" : ""}`}>
           {children}

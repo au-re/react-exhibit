@@ -23,7 +23,7 @@
 .ReactExhibit__ApplicationListItem.ApplicationListItem--Selected:hover {
     background-color: var(--tile-bright);
     border-left: 4px solid var(--blue);
-    color: #000;
+    color: var(--blue) !important;
     font-size: 16px;
     padding-left: 20px;
 }

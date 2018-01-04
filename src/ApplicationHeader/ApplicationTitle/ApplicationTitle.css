@@ -1,5 +1,5 @@
 .ReactExhibit__ApplicationTitle {
-    font-size: 22px;
+    font-size: 18px;
     cursor: pointer;
     padding: 0px 8px 0 8px;
     line-height: 40px;
@@ -7,4 +7,13 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+}
+
+.ReactExhibit__ApplicationTitle a {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+.ReactExhibit__ApplicationTitle a:hover {
+    color: #333;
 }

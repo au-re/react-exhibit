@@ -1,11 +1,12 @@
 /*  eslint-disable */
 
-import { Exhibit } from "./lib";
 import Markdown from "markdown-to-jsx";
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
+
 import readme from "../README.md";
+import { Exhibit, GithubCorner } from "./lib";
 import registerServiceWorker from './registerServiceWorker';
 
 /* FETCH THE DEMO DATA */
@@ -110,11 +111,14 @@ function requireAllDemos() {
 
 ReactDOM.render(
   <Router>
-    <Exhibit
-      readme={<Markdown>{readme}</Markdown>}
-      baseURL={process.env.PUBLIC_URL}
-      libName="react-exhibit"
-      components={requireAllDemos()} />
+    <div>
+      <GithubCorner style={{ position: "fixed", zIndex: 13 }} size="80" bannerColor="#F9AE15" />
+      <Exhibit
+        readme={<Markdown>{readme}</Markdown>}
+        baseURL={process.env.PUBLIC_URL}
+        libName="react-exhibit"
+        components={requireAllDemos()} />
+    </div>
   </Router>,
   document.getElementById("root"));
 

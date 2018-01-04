@@ -1,16 +1,18 @@
 .ReactExhibit__Sidebar {
     padding-top: 80px;
     min-width: 320px;
-    /* background-color: var(--application-bright); */
-    /* padding-right: 16px; */
+    background-color: #F6F7F7;
     z-index: 11 !important;
     border-right: 1px solid #ededed;
-    /* box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.4); */
+    box-shadow: inset -1px 0px 8px rgba(0, 0, 0, 0.05);
+}
+
+.ReactExhibit__Sidebar:first-child .ReactExhibit__ApplicationListDropdown {
+    margin-top: 0px;
 }
 
 .ReactExhibit__Sidebar__Content {
     overflow-y: auto !important;
-    /* background-color: var(--tile-bright); */
     display: flex;
     flex-direction: column;
 }
