@@ -73,7 +73,7 @@ function requireAllDemos() {
     const demoName = extractDemoName(key);
 
     // initiate component if no demo was found for it
-    if (_.isEmpty(components[componentName])) {
+    if (!components[componentName]) {
       components[componentName] = {
         demo: {},
         docs: {},
