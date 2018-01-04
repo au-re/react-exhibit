@@ -5,7 +5,7 @@ import React, { Component } from "react";
 import { Link, Redirect, Route, Switch, withRouter } from "react-router-dom";
 import Sidebar from "react-sidebar";
 
-import { ApplicationHeader, ApplicationListDropdown, ApplicationListItem, ApplicationTitle, GithubCorner, SystemHeader, SystemTitle } from "../lib";
+import { ApplicationHeader, ApplicationListDropdown, ApplicationListItem, ApplicationTitle, SystemHeader, SystemTitle } from "../lib";
 import { DemoPage } from "./DemoPage";
 import { DocPage } from "./DocPage";
 import { LandingPage } from "./LandingPage";
