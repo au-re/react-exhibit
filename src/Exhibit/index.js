@@ -1,6 +1,5 @@
 import "./Exhibit.css";
 
-import _ from "lodash";
 import React, { Component } from "react";
 import { Link, Redirect, Route, Switch, withRouter } from "react-router-dom";
 import Sidebar from "react-sidebar";
@@ -155,7 +154,7 @@ class ReactExhibit extends Component {
   render() {
     const { libName, baseURL = "", readme, location } = this.props;
     const { sidebarDocked, sidebarOpen } = this.state;
-    const pathname = _.get(location, "pathname", "");
+    const pathname = (location && location.pathname) || "";
 
     return (
       <div className="ReactExhibit">

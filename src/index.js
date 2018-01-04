@@ -67,16 +67,10 @@ function requireAllDemos() {
   const readMes = require.context("./", true, /.*[^.]\/README.md$/);
   const docs = require.context("!!raw-loader!jsdoc2js-loader!./", true, /.*[^.]\/index.js/);
 
-  console.log("DEMOS:", demos.keys());
-  console.log("DOCS:", docs.keys());
-  console.log("READMES:", readMes.keys());
-
   demos.keys().forEach((key) => {
     const componentPath = extractComponentPath(key, "demo");
     const componentName = extractComponentName(key, "demo");
     const demoName = extractDemoName(key);
-
-    console.log(componentPath);
 
     // initiate component if no demo was found for it
     if (_.isEmpty(components[componentName])) {
@@ -123,4 +117,3 @@ ReactDOM.render(
   document.getElementById("root"));
 
 registerServiceWorker();
-

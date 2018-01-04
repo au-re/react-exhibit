@@ -31,8 +31,3 @@ if (typeof matchMedia === 'undefined') {
 if (process.env.NODE_ENV === 'test') {
   require('raf').polyfill(global);
 }
-
-const Enzyme = require("enzyme");
-const Adapter = require("enzyme-adapter-react-16");
-
-Enzyme.configure({ adapter: new Adapter() });

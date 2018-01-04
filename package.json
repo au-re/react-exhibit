@@ -6,6 +6,8 @@
   "homepage": "https://au-re.github.io/react-exhibit/",
   "main": "lib/index.js",
   "scripts": {
+    "analyze": "source-map-explorer build/static/js/main.*",
+    "analyze:lib": "source-map-explorer lib/index.*",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
@@ -32,9 +34,6 @@
     "react-sidebar": "^2.3.2"
   },
   "devDependencies": {
-    "enzyme": "^3.2.0",
-    "enzyme-adapter-react-16": "^1.1.0",
-    "enzyme-to-json": "^3.2.2",
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
@@ -48,6 +47,9 @@
     "css-loader": "0.28.7",
     "cz-conventional-changelog": "^2.1.0",
     "dotenv": "4.0.0",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "enzyme-to-json": "^3.2.2",
     "eslint": "4.10.0",
     "eslint-config-react-app": "^2.0.1",
     "eslint-loader": "1.9.0",
@@ -69,6 +71,7 @@
     "raw-loader": "^0.5.1",
     "react-dev-utils": "^4.2.1",
     "serve": "^6.4.1",
+    "source-map-explorer": "^1.5.0",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.6.2",
@@ -82,7 +85,8 @@
       "src/**/*.{js,jsx,mjs}"
     ],
     "setupFiles": [
-      "<rootDir>/config/polyfills.js"
+      "<rootDir>/config/polyfills.js",
+      "<rootDir>/scripts/test-setup.js"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
