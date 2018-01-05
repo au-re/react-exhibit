@@ -73,8 +73,8 @@ class ReactExhibit extends Component {
       </ApplicationListDropdown>));
 
     // setup the routes for all components
-    this.routes = Object.keys(components).map((component) =>
-      (<Route path={`${baseURL}/${component}`} component={() => (
+    this.routes = Object.keys(components).map((component, idx) =>
+      (<Route key={idx} path={`${baseURL}/${component}`} component={() => (
         <div>
           <DocPage
             componentName={component}
