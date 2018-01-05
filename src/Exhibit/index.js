@@ -11,9 +11,9 @@ import { LandingPage } from "./LandingPage";
 
 const mql = window.matchMedia(`(min-width: 992px)`);
 
-const componentNameFromUrl = (url) => url.split("/")[1];
-const demoNameFromUrl = (url) => url.split("/")[2];
-const componentUrl = (url) => url.split("/").slice(0, 2).join("/");
+const componentNameFromUrl = (url, baseURL) => url.split("/")[baseURL ? 2 : 1];
+const demoNameFromUrl = (url, baseURL) => url.split("/")[baseURL ? 3 : 2];
+const componentUrl = (url, baseURL) => url.split("/").slice(0, baseURL ? 3 : 2).join("/");
 
 /**
  * Application to demo react components
@@ -159,19 +159,19 @@ class ReactExhibit extends Component {
     return (
       <div className="ReactExhibit">
         <SystemHeader>
-          <SystemTitle title={libName} href={`/${baseURL}`} />
+          <SystemTitle title={libName} href={baseURL || "/"} />
         </SystemHeader>
         <ApplicationHeader light collapsed={sidebarDocked} onClick={this.toggleSideBarDock}>
           <ApplicationTitle>
             {
-              componentNameFromUrl(pathname) &&
-              <Link to={componentUrl(pathname)}>{componentNameFromUrl(pathname)}</Link>
+              componentNameFromUrl(pathname, baseURL) &&
+              <Link to={componentUrl(pathname, baseURL)}>{componentNameFromUrl(pathname, baseURL)}</Link>
             }
             {
-              demoNameFromUrl(pathname) &&
+              demoNameFromUrl(pathname, baseURL) &&
               <span style={{ marginLeft: "4px" }}>
                 <span style={{ marginRight: "4px" }}>/</span>
-                <Link to={pathname}>{demoNameFromUrl(pathname)}</Link>
+                <Link to={pathname}>{demoNameFromUrl(pathname, baseURL)}</Link>
               </span>
             }
           </ApplicationTitle>
