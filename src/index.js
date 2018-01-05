@@ -9,7 +9,6 @@ import { Exhibit, GithubCorner } from "./lib";
 import registerServiceWorker from './registerServiceWorker';
 
 /* FETCH THE DEMO DATA */
-// TODO the function "requireAllDemos" should be part of react-exhibit!!
 
 // .../MySubComponent/${stop}/... -> 'MySubComponent'
 function extractComponentName(path, stop) {
