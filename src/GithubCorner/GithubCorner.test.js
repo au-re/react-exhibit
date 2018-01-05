@@ -1,6 +1,7 @@
-import GithubCorner from "./index";
-import React from "react";
 import { shallow } from "enzyme";
+import React from "react";
+
+import GithubCorner from "./index";
 
 it("renders without parameters", () => {
   expect(shallow(<GithubCorner />)).toMatchSnapshot();

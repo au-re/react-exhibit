@@ -1,4 +1,8 @@
-import { GithubCorner } from "../../lib";
 import React from "react";
 
-export default () => (<GithubCorner />);
+import { GithubCorner } from "../../lib";
+
+export default () => (
+  <div style={{ height: "100px"}}>
+    <GithubCorner />
+  </div>);

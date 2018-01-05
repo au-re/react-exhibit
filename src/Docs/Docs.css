@@ -1,5 +1,6 @@
 .ReactExhibit__Docs .Docs__TableWrapper {
     overflow-x: auto;
+    margin: 4px 0 16px 0;
 }
 
 .ReactExhibit__Docs .Docs__Table {
@@ -11,14 +12,14 @@
 }
 
 .ReactExhibit__Docs .Docs__Table__Labels {
-    background-color: var(--orange);
+    background-color: #272822;
     color: #FFF;
 }
 
 .ReactExhibit__Docs .Docs__Table__Labels th {
     padding-left: 15px;
     font-size: 15px;
-    border: 1px solid var(--orange);
+    border: 1px solid #272822;
 }
 
 .ReactExhibit__Docs .Docs__Table tr {

@@ -5,21 +5,9 @@
 .Showcase__Demo {
     border: 1px solid rgba(170, 170, 170, 0.4);
     border-bottom: none;
-    padding: 48px 16px 16px 16px;
     position: relative;
     overflow-x: auto;
-}
-
-.Showcase__Demo:before {
-    font-family: 'Arimo', sans-serif;
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding: 1em;
-    color: var(--showcase-grey);
-    font-size: smaller;
-    font-weight: 500;
-    content: 'EXAMPLE';
+    padding: 8px;
 }
 
 .Showcase__Source {
@@ -31,13 +19,4 @@
     border: none;
     margin: 0;
     font-size: 16px;
-}
-
-
-/* Small Devices, Tablets */
-
-@media only screen and (min-width: 768px) {
-    .Showcase__Demo {
-        padding: 48px;
-    }
 }

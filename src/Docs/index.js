@@ -1,13 +1,14 @@
 import "./Docs.css";
 
-import { ContentTile, ContentTileHeader } from "../lib";
-
 import React from "react";
+
+import { ContentTile, ContentTileHeader } from "../lib";
 
 /**
  * A table to display a components parameters. Returns an empty div if no
  * parameters are passed.
  *
+ * @export
  * @param {array} [params] - the parameters to pass to the component
  * @returns {object} - the parameter table or an empty div
  */

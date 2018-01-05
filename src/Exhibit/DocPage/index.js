@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-
-import { Docs } from "../../lib";
-import Helmet from "react-helmet";
 import Markdown from "markdown-to-jsx";
+import React, { Component } from "react";
+import Helmet from "react-helmet";
+
+import { ContentTile, Docs } from "../../lib";
 
 /**
  * Page containing the documentation of a component, specific readme and prop definition
@@ -33,7 +33,7 @@ export class DocPage extends Component {
     return (
       <div className="ReactExhibit__DocPage">
         <Helmet><title>{`${libName} - ${componentName}`}</title></Helmet>
-        {readme && <Markdown>{readme}</Markdown>}
+        {readme && <ContentTile><Markdown>{readme}</Markdown></ContentTile>}
         {componentDocs}
       </div>);
   }

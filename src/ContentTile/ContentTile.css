@@ -6,9 +6,19 @@
 }
 
 .ReactExhibit__ContentTile .ContentTile__Header {
+    min-height: 20px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: var(--showcase-grey);
+    font-size: smaller;
+    font-weight: 500;
+    font-family: 'Arimo', sans-serif;
+}
+
+.ReactExhibit__ContentTile .ContentTile__Header--Main {
     min-height: 40px;
     line-height: 40px;
-    font-size: 18px;
+    font-size: 24px;
 }
 
 .ReactExhibit__ContentTile .ContentTile__Content {

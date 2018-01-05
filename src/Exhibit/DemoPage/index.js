@@ -1,7 +1,7 @@
-import { ContentTile, Showcase } from "../../lib";
 import React, { Component } from "react";
-
 import Helmet from "react-helmet";
+
+import { ContentTile, ContentTileHeader, Showcase } from "../../lib";
 
 /**
  * The source code contains relative paths, replace them with an absolute path
@@ -46,6 +46,7 @@ export class DemoPage extends Component {
       <div className="ReactExhibit__DemoPage">
         <Helmet><title>{`${libName} - ${name}`}</title></Helmet>
         <ContentTile>
+          <ContentTileHeader label="example" />
           <Showcase
             demo={demo}
             source={parseDependency(source, libName)} />

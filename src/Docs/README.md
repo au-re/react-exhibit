@@ -1,7 +1,4 @@
 Docs
 ===
 
-hello world
-
-* item 1
-* item 2
+Components to display documentation

@@ -3,8 +3,7 @@ import "./GithubCorner.css";
 import React, { Component } from "react";
 
 /**
- * A react component based on:
- * https://github.com/tholman/github-corners
+ * A fancy link to github
  *
  * @export
  * @class GithubCorner

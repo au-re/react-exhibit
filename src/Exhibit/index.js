@@ -169,8 +169,8 @@ class ReactExhibit extends Component {
             }
             {
               demoNameFromUrl(pathname) &&
-              <span>
-                <span>/</span>
+              <span style={{ marginLeft: "4px" }}>
+                <span style={{ marginRight: "4px" }}>/</span>
                 <Link to={pathname}>{demoNameFromUrl(pathname)}</Link>
               </span>
             }
