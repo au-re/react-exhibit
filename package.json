@@ -26,6 +26,7 @@
   "dependencies": {
     "jsdoc2js-loader": "^1.0.2",
     "markdown-to-jsx": "^6.4.0",
+    "marked": "^0.3.9",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",
