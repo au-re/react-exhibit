@@ -1,7 +1,7 @@
 import "./Exhibit.css";
 
 import React, { Component } from "react";
-import { Link, Redirect, Route, Switch, withRouter } from "react-router-dom";
+import { Link, Redirect, Route, BrowserRouter as Router, Switch, withRouter } from "react-router-dom";
 import Sidebar from "react-sidebar";
 
 import { ApplicationHeader, ApplicationListDropdown, ApplicationListItem, ApplicationTitle, SystemHeader, SystemTitle } from "../lib";
@@ -199,4 +199,5 @@ class ReactExhibit extends Component {
   }
 }
 
-export default withRouter(ReactExhibit);
+const Exhibit = withRouter(ReactExhibit);
+export default (props) => <Router><Exhibit {...props} /></Router>;
