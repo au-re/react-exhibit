@@ -15,8 +15,6 @@
     overflow-y: auto !important;
     display: flex;
     flex-direction: column;
-    max-width: 1200px;
-    margin: auto;
 }
 
 .ReactExhibit__Content {
